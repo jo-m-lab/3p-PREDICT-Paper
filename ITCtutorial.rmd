@@ -47,10 +47,11 @@ endclustSrobjs <- GenTieredclusters(srobj,
 
 Specifying output directories saves QC statistics  
 <br>
-<img src="https://github.com/jo-m-lab/3p-PREDICT-Paper/blob/docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_QC_vln_plot.pdf" width="400" height="300">  
+<img src="https://github.com/jo-m-lab/3p-PREDICT-Paper/raw/master/docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_QC_vln_plot.pdf" width="400" height="300">  
 <br>
 clustering decision metrics  
-<img src="https://github.com/jo-m-lab/3p-PREDICT-Paper/blob/docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_Mon-Oct-28-03_41_07_PM-2019-UTC.pdf" width="800" height="275">  
+
+<img src="https://github.com/jo-m-lab/3p-PREDICT-Paper/raw/master/docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_Mon-Oct-28-03_41_07_PM-2019-UTC.pdf" width="800" height="275">  
 <br>
 differential expression results among clusters (and visualizations) at each level in 'figdir'  
 ```{r,echo=FALSE,message=FALSE,warning=FALSE}
@@ -59,9 +60,11 @@ de %>% head
 ```
 <br>
 and UMAP visualizations at each tier.  
-<img src="https://github.com/jo-m-lab/3p-PREDICT-Paper/blob/docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_cluster_umap.pdf" width="400" height="400">  
+<img src="https://github.com/jo-m-lab/3p-PREDICT-Paper/raw/master/docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_cluster_umap.pdf" width="400" height="400">  
 <br>
 <br>
+
+
   
 It also saves subset seurat objects for each cluster in 'srobjs', and saves files with lists of cells per end-cluster in 'endclusts'.  
 
