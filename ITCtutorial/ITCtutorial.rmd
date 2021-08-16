@@ -1,35 +1,36 @@
 ---
-title: "Iterative tiered clustering (ITC) guided tutorial"
-author: 'Kyle Kimler and Ben Doran'
+title: "Iterative tiered clustering (ARBOL) guided tutorial"
 output:
   html_document:
     toc: true
     toc_depth: 2
 ---
 
-#### Compiled: June 15, 2021
+#### [Ben Doran](https://github.com/BenjaminDoran) and [Kyle Kimler](https://github.com/kylekimler)
 
-ITC iteratively explores axes of variation in scRNAseq data by clustering and subclustering until variation between cells becomes noise. The philosophy of ITC is that every axis of variation could be biologically meaningful, so each should be explored. Once every possibility is explored, curation and a statistical interrogation of the resolution are used to collapse clusters into the elemental transcriptomes of the dataset. ITC inherently builds a tree of subclustering events. As data is separated by the major axes of variation in each subset, further rounds capture less pronounced variables. This comes with some caveats: variation shared by all celltypes make up one of the major axes of variation in the first round of clustering. Celltypes can split up at the beginning, so the same splitting of e.g. B and T cells might happen further down in separate branches. Thus the resulting clustering tree is neither indicitave of true distances between end clusters nor a tree of unique groupings. We address this by calculation of a binary tree of manually curated end clusters, providing a distance between elemental transcriptomes.  
+#### Compiled: August 13, 2021
 
-ITC is meant to be a modular software. Currently it iterates through the default Seurat analysis pipeline, with two additions that allow automation: <br>
--  PCs used in clustering are chosen by 15 percent improvement of variance explained<br>
+ARBOL iteratively explores axes of variation in scRNAseq data by clustering and subclustering until variation between cells in subclusters becomes noise. The philosophy of ARBOL is that every axis of variation could be biologically meaningful, so each should be explored. Once every possibility is explored, curation and a statistical interrogation of the resolution are used to collapse clusters into the elemental transcriptomes of the dataset. ARBOL inherently builds a tree of subclustering events. As data is separated by the major axes of variation in each subset, further rounds capture less pronounced variables. This comes with some caveats: variation shared by all celltypes make up one of the major axes of variation in the first round of clustering. Celltypes can split up at the beginning, so the same splitting of e.g. B and T cells might happen further down in separate branches. Thus the resulting clustering tree is neither indicitave of true distances between end clusters nor a tree of unique groupings. We address this by manual curation of cell types, subtypes, and states, using literature-defined markers in the end clusters, an [end-cluster naming method](https://kylekimler.shinyapps.io/shinyrank/) that captures the unique markers of the end clusters, and the calculation of a binary tree of these manually curated end clusters, providing a distance between the elemental transcriptomes of the dataset.  
+
+ARBOL was built to be a modular software. Currently it iterates through the default Seurat analysis pipeline, with two additions that enable automation: <br>
+- PCs used in clustering are chosen by 15 percent improvement of variance explained<br>
 - clustering parameters are chosen by maximization of silhouette size on a downsampled parameter scan<br>  
 Normalization, dimensionality reduction, clustering, and plotting methods are set apart in the code in modularized functions to enable customization. 
 
-Ben Doran decided to write the software to address the fact that we were constantly manually subclustering scRNAseq data, and because other iterative clustering softwares like scPanoView and iterclust are tailor built for specific clustering methods outside of the Seurat paradigm.
+We saw a need for this software to address the fact that we were constantly manually subclustering scRNAseq data, and because other iterative clustering softwares like scPanoView and iterclust are tailor built for specific clustering methods outside of the Seurat paradigm.
 
-Model datasets:
+This tutorial uses the following model datasets:
 <br>
-- pediatric FGID: 89849 cells x 22431 genes
+- pediatric FGID from the paper: 89849 cells x 22431 genes
 <br>
-- Nasal Polyp (Ordovas-Montanes et al 2018) scRNAseq: 19196 cells x 22360 genes  
+- Nasal Polyp ([Ordovas-Montanes et al 2018](https://www.nature.com/articles/s41586-018-0449-8)): 19196 cells x 22360 genes  
 
-# FGID ITC
+# FGID ARBOL
 Reproducing figures for the 2021 paper  
 
-## Running ITC
-The [github page](https://github.com/ShalekLab/SCTieredClustering) describes ITC  
-ITC is called directly on a seurat object:  
+## Running ARBOL
+The [github page](https://github.com/ShalekLab/SCTieredClustering) describes ARBOL  
+ARBOL is called directly on a seurat object:  
 
 ```{r,message=FALSE,warning=FALSE,echo=FALSE}
 source('/Users/kkimler/Projects/SCTieredClusteringIntermediates/SCTieredClustering_Annotation_Dendrogram_Module.R')
@@ -47,12 +48,14 @@ endclustSrobjs <- GenTieredclusters(srobj,
 
 Specifying output directories saves QC statistics  
 <br>
-<img src="https://github.com/jo-m-lab/3p-PREDICT-Paper/raw/master/docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_QC_vln_plot.pdf" width="400" height="300">  
+<img src="docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_QC_vln_plot.pdf" width="400" height="300">  
 <br>
-clustering decision metrics  
 
-<img src="https://github.com/jo-m-lab/3p-PREDICT-Paper/raw/master/docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_Mon-Oct-28-03_41_07_PM-2019-UTC.pdf" width="800" height="275">  
+clustering decision metrics
+
+<img src="docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_Mon-Oct-28-03_41_07_PM-2019-UTC.pdf" width="800" height="275">  
 <br>
+
 differential expression results among clusters (and visualizations) at each level in 'figdir'  
 ```{r,echo=FALSE,message=FALSE,warning=FALSE}
 de <- fread('/Users/kkimler/Projects/SCTieredClusteringDev/TutorialDocs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_top10markers.tsv')
@@ -60,16 +63,20 @@ de %>% head
 ```
 <br>
 and UMAP visualizations at each tier.  
-<img src="https://github.com/jo-m-lab/3p-PREDICT-Paper/raw/master/docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_cluster_umap.pdf" width="400" height="400">  
+<img src="docs/Tiered-FGID-13_20191028_FGID_tiered_clusters_output_figs_cluster_umap.pdf" width="400" height="400">  
 <br>
 <br>
 
+Finally, GenTieredClusters() also saves subset seurat objects for each cluster in 'srobjs', and saves files with lists of cells per end-cluster in 'endclusts'.  
+<br>
 
-  
-It also saves subset seurat objects for each cluster in 'srobjs', and saves files with lists of cells per end-cluster in 'endclusts'.  
 
+Iterative clustering is enabled by automation of two key parameter choices. Principle components are chosen using two heuristics: when more than 500 cells are present, PCs are included if they explain 15% more variance than the following component. When less than 500 cells, Seurat's Jackstraw method is used to calculate significant principle components. Clustering is performed automatically by performing a parameter scan on a downsampled dataset using Seurat's built-in Louvain clustering. Silhouette measures the ratio of intra-cluster distance to inter-cluster distance, where a high score means highly distinct clusters. For stages where we were clustering more than 500 cells, a randomized subsample of N cells / 10 was used in the parameter scane.
 
-## Working with ITC results
+<br>
+<br>
+
+## Working with ARBOL results
 I prefer to load tiered cluster data into a dataframe, which I can use directly for comparisons or which I can reattach to the full seurat object's metadata for annotation, dendrogram production, and other analysis. 
 
 ```{r}
@@ -104,7 +111,7 @@ fgtiers <- meta %>%
 print(head(fgtiers))
 ```
 
-## Add ITC annotations to the seurat object
+## Add ARBOL annotations to the seurat object
 
 ```{r,eval=FALSE}
 srobj <- readRDS('~/PREDICT_3p_Paper/FGID/srobj.rds')
@@ -146,7 +153,7 @@ curatedNamediversity <- srobj@meta.data %>% group_by(curatedname) %>%
 We used patient diversity among end clusters to inform manual curation
 
 ```{r,fig.height=5,fig.width=10,message=FALSE,warning=FALSE}
-s1 <- ggplot(tierNdiversity,aes(x=diversity))+ geom_histogram() + ggtitle("raw ITC results")
+s1 <- ggplot(tierNdiversity,aes(x=diversity))+ geom_histogram() + ggtitle("raw ARBOL results")
 s2 <- ggplot(curatedNamediversity,aes(x=diversity))+ geom_histogram() + ggtitle("after manual curation")
 s1+s2
 ```
@@ -168,16 +175,16 @@ suppressPackageStartupMessages(library(phylogram))
 meta <- srobj@meta.data
 meta$pathString <- meta$tierNident
 meta$pathString <- gsub('\\.','/',meta$pathString)
-itctree <- as.Node(meta) 
-print(itctree,'majortype','subtype','groundtruth','curatedname',limit=20)
+ARBOLtree <- as.Node(meta) 
+print(ARBOLtree,'majortype','subtype','groundtruth','curatedname',limit=20)
 
-itcphylo <- as.phylo(itctree)
+ARBOLphylo <- as.phylo(ARBOLtree)
 
 #For curatednames
-#itcphylo$tip.label <- itctree$Get('curatedname')[!is.na(itctree$Get('curatedname'))]
+#ARBOLphylo$tip.label <- ARBOLtree$Get('curatedname')[!is.na(ARBOLtree$Get('curatedname'))]
 #For tierNident
-itcphylo$tip.label <- itctree$Get('tierNident')[!is.na(itctree$Get('tierNident'))]
-ggtree(itcphylo,branch.length='edge.length',layout='circular')
+ARBOLphylo$tip.label <- ARBOLtree$Get('tierNident')[!is.na(ARBOLtree$Get('tierNident'))]
+ggtree(ARBOLphylo,branch.length='edge.length',layout='circular')
 
 ```
   
@@ -196,7 +203,7 @@ plotdendrogram <- function(phyloObj,title) {
 	celltype.colors <- primary.colors(length(unique(ddata_L$group)))
 	names(celltype.colors) <- unique(ddata_L$group)
 
-	ddata_L$count = as.numeric(table(factor(srobj$tierNident))[itcphylo$tip.label])
+	ddata_L$count = as.numeric(table(factor(srobj$tierNident))[ARBOLphylo$tip.label])
 
 	ddata_L$diversity = srobj@meta.data %>% group_by(tierNident) %>% 
 		summarize(diversity = 1 - sum(((table(patient)) / (length(patient)))^2)) %>%
@@ -232,19 +239,19 @@ plotdendrogram <- function(phyloObj,title) {
 ```
 
 ```{r, fig.height=32, fig.width=12}
-p1 <- plotdendrogram(itcphylo, title='original hierarchy tree')
+p1 <- plotdendrogram(ARBOLphylo, title='raw ARBOL')
 p1
 ```
   
   
 ## Annotation
-In the paper, tiers 1 and 2 were annotated manually. End clusters were named based on the tier1.tier2 combination they belonged to, followed by 2 genes either manually chosen or chosen on a heuristic rank score among its tier2 group. The rank score is calculated as follows on the results of a 1 vs. all wilcoxon rank sum test: 
+In the paper, tiers 1 and 2 were well annotated by comparing Wilcoxon 1 v all results to markers in the literature. End clusters were named based on the tier1.tier2 combination they belonged to, followed by 2 genes either manually chosen or chosen on a heuristic rank score among its tier2 group. The rank score is calculated as follows on the results of a 1 vs. all wilcoxon rank sum test: 
 
 $$-\log (p.adj+(1*10^{-310})) * \log{foldchange} * \small\cfrac{pct.1}{pct.2+1*10^{-300}}$$
 
 [We also created a shiny app](https://kylekimler.shinyapps.io/shinyrank/) for understanding how the weighting the components of the rank score affects gene choice
 
-We can view the original ITC tree with curated names to get an idea of how we collapsed clusters  
+We can view the raw ARBOL with curated names to get an idea of how we collapsed clusters  
 
 ```{r}
 curatedNamediversity <- srobj@meta.data %>% group_by(curatedname) %>% 
@@ -301,19 +308,19 @@ plotdendrogram <- function(phyloObj,title) {
 ```
 
 ```{r, fig.height=32, fig.width=12}
-itcphylo$tip.label <- itctree$Get('curatedname')[!is.na(itctree$Get('curatedname'))]
-p2 <- plotdendrogram(as.phylo(itcphylo),"original hierarchy with curated names")
+ARBOLphylo$tip.label <- ARBOLtree$Get('curatedname')[!is.na(ARBOLtree$Get('curatedname'))]
+p2 <- plotdendrogram(as.phylo(ARBOLphylo),"raw ARBOL with curated names")
 p2
 ```
 
-It is important to note that ITC can split major cell types in the earliest stages, so that the final tree may misrepresent the relationships of the end clusters. To reconstruct those relationships, we hierarchically clustered euclidean distances between gene medians among end clusters, building a binary tree 
+It is important to note that ARBOL can split major cell types in the earliest stages, so that the final tree may misrepresent the relationships of the end clusters. To reconstruct those relationships, we hierarchically clustered euclidean distances between gene medians among end clusters, building a binary tree 
 <br>
 <br>
   
 
 ## Binary tree creation
 
-While curating the end clusters, we wanted to better understand the distance between clusters. In the atlas figures 3 and 4, we performed hierarchical clustering of curated end clusters (not to be confused with ITC: hclus produces a binary tree). Hierarchical clustering was performed on median expression of a subset of highly DE genes (approximately 4500) using complete linkage and distance calculated with Pearson correlation. DE was performed by pairwise expression tests of end clusters.
+While curating the end clusters, we wanted to better understand the distance between clusters. In the atlas figures 3 and 4, we performed hierarchical clustering of curated end clusters (not to be confused with the raw ARBOL: hclus produces a binary tree). Hierarchical clustering was performed on median expression of a subset of highly DE genes (approximately 4500) using complete linkage and distance calculated with Pearson correlation. DE was performed by pairwise expression tests of end clusters.
   
 ```{r,echo=FALSE}
 de.df.sct <- fread('/Users/kkimler/Projects/SCTieredClusteringDev/TutorialDocs/Tiered-FGID-13_20200519_FGID13_bestdiffgenes.tsv')
@@ -405,9 +412,9 @@ p3 <- plotdendrogram(phyloObj=as.phylo(result$hclust),"The end result: The curat
 p3
 ```
 
-# Nasal Polyp ITC
+# Nasal Polyp ARBOL
 
-Here is another example of an ITC tree built on another scRNAseq dataset of nasal polyps.
+Here is another example of an ARBOL built on another scRNAseq dataset of nasal polyps.
   
 
 
@@ -544,7 +551,7 @@ GetStandardNames <- function(srobj,figdir) {
 
 srobj <- GetStandardNames(srobj,figdir)
 
-groundtruth <- read_tsv('/Users/kkimler/Projects/SETA/nasalPolyp/20180822_PolypAll_cleaned_metadata.txt') %>% rename(CellID = X1)
+groundtruth <- read_tsv('/Users/kkimler/Projects/SETA/nasalPolyp/20180822_PolypAll_cleaned_metadata.txt') %>% rename(CellID = `...1`)
 
 meta <- srobj@meta.data %>% left_join(.,groundtruth %>% select(CellID,subset),by='CellID') %>% rename(groundtruth = subset)
 
@@ -557,7 +564,7 @@ tierNdiversity <- srobj@meta.data %>% group_by(tierNident) %>%
 meta$pathString <- paste0('T0C0.',meta$tierNident)
 meta$pathString <- gsub('\\.','/',meta$pathString)
 meta <- meta %>% rename(papertype=groundtruth)
-itctree <- as.Node(meta)
+ARBOLtree <- as.Node(meta)
 
 plotdendrogram <- function(phyloObj,title) {
 	dd.row <- as.dendrogram(phyloObj)
@@ -606,11 +613,11 @@ plotdendrogram <- function(phyloObj,title) {
 	return(plt)
 }
 
-itcphylo <- as.phylo(itctree)
+ARBOLphylo <- as.phylo(ARBOLtree)
 
-itcphylo$tip.label <- itctree$Get('tierNident')[!is.na(itctree$Get('tierNident'))]
+ARBOLphylo$tip.label <- ARBOLtree$Get('tierNident')[!is.na(ARBOLtree$Get('tierNident'))]
 
-nasalp1 <- plotdendrogram(itcphylo,'nasal polyp ITC hierarchy')
+nasalp1 <- plotdendrogram(ARBOLphylo,'nasal polyp ARBOL hierarchy')
 
 
 plotdendrogram <- function(phyloObj,title) {
@@ -620,7 +627,7 @@ plotdendrogram <- function(phyloObj,title) {
 	ddata_L$label <- str_replace_all(ddata_L$label, "−", "-")
 	#For imported type
 	#ddata_L$group <- phyloObj$tip.group
-	#ddata_L$group <- itcphylo$tip.group[match(ddata_L$label,itcphylo$tip.label)]
+	#ddata_L$group <- ARBOLphylo$tip.group[match(ddata_L$label,ARBOLphylo$tip.label)]
 	#For majortype
 	ddata_L$group <- gsub("\\..*$", "", ddata_L$label)
 	#For subtype
@@ -664,11 +671,11 @@ plotdendrogram <- function(phyloObj,title) {
 }
 
 
-itcphylo$tip.label <- itctree$Get('curatedname')[!is.na(itctree$Get('curatedname'))]
+ARBOLphylo$tip.label <- ARBOLtree$Get('curatedname')[!is.na(ARBOLtree$Get('curatedname'))]
 
-itcphylo$tip.group <- itctree$Get('papertype')[!is.na(itctree$Get('tierNident'))]
+ARBOLphylo$tip.group <- ARBOLtree$Get('papertype')[!is.na(ARBOLtree$Get('tierNident'))]
 
-nasalp2 <- plotdendrogram(itcphylo,'nasal polyp curated hierarchy')
+nasalp2 <- plotdendrogram(ARBOLphylo,'nasal polyp curated hierarchy')
 
 
 plotdendrogram <- function(phyloObj,title) {
@@ -678,7 +685,7 @@ plotdendrogram <- function(phyloObj,title) {
 	ddata_L$label <- str_replace_all(ddata_L$label, "−", "-")
 	#For imported type
 	ddata_L$group <- phyloObj$tip.group
-	#ddata_L$group <- itcphylo$tip.group[match(ddata_L$label,itcphylo$tip.label)]
+	#ddata_L$group <- ARBOLphylo$tip.group[match(ddata_L$label,ARBOLphylo$tip.label)]
 	#For majortype
 	#ddata_L$group <- gsub("\\..*$", "", ddata_L$label)
 	#For subtype
@@ -726,7 +733,7 @@ tbetree <- read.tree('/Users/kkimler/Projects/SETA/nasalPolyp/pvclust_BOOSTER_TB
 
 hclusphylo <- as.phylo(tbetree)
 
-hclusphylo$tip.group <- itcphylo$tip.group[match(hclusphylo$tip.label,itcphylo$tip.label)]
+hclusphylo$tip.group <- ARBOLphylo$tip.group[match(hclusphylo$tip.label,ARBOLphylo$tip.label)]
 
 nasalp3 <- plotdendrogram(hclusphylo,title='medians hclus curated tree')
 ```
