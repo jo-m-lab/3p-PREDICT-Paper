@@ -5,4 +5,5 @@ Contents:
  - links to tools used in the paper
 
 
-3p Paper's ITC tutorial: https://jo-m-lab.github.io/3p-PREDICT-Paper/ITCtutorial.html
+ARBOL tutorial: https://jo-m-lab.github.io/3p-PREDICT-Paper/ITCtutorial/ITCtutorial.html
+Annotation Rank Score shiny app: https://kylekimler.shinyapps.io/shinyrank/
