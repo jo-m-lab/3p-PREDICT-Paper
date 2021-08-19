@@ -1,0 +1,1218 @@
+ident: T0C0
+path: FG
+name: all-cells
+T1C0:
+  ident: T1C0 
+  name: Tclls
+  T2C0:
+    ident: T2C0
+    name: activated
+    T3C0:
+      ident: T3C0
+      name: IL7R
+      T4C0:
+        ident: T4C0
+        name: ICOS_CCR6
+        isend: true
+        T5C0:
+          ident: T5C0
+          name: MALAT1_HLA-B_p034_dominated
+        T5C1:
+          ident: T5C1
+          name: CD69_NFKBIA
+        T5C2:
+          ident: T5C2
+          name: interferon_stimulated_p030_dominated
+        T5C3:
+          ident: T5C3
+          name: CCL20_IER3_TNFRSF4_IL4I1_p030_dominated
+          T6C0:
+            ident: T6C0 
+            name: STAT1_p030_dominated
+          T6C1:
+            ident: T6C1 
+            name: p028_p043_biased
+          T6C3:
+            ident: T6C3 
+            name: CCL20_p030_dominated
+        T5C4:
+          ident: T5C4
+          name: CXCR4_LITAF_p033_biased
+        T5C5:
+          ident: T5C5
+          name: IL17A_TPT1_p009_dominated
+        T5C6:
+          ident: T5C6
+          name: p009_biased
+        T5C7:
+          ident: T5C7
+          name: mito_p043_biased
+        T5C8:
+          ident: T5C8
+          name: cytotoxic_p030_dominated
+        T5C9:
+          ident: T5C9
+          name: Plsma_doublet_p050_dominated
+      T4C1:
+        ident: T4C1
+        name: doublets_p043_dominated
+        isend: true
+      T4C2:
+        ident: T4C2
+        name: CD8A_CD8B_RUNX3
+        isend: true
+        T5C0:
+          ident: T5C0
+          name: ANXA1_CREM_gradient
+        T5C1:
+          ident: T5C1
+          name: p034_p035_dominated
+        T5C2:
+          ident: T5C2
+          name: p009_dominated
+      T4C3:
+        ident: T4C3
+        name: IFNGR_ISG_p037_dominated
+        notes: not_actually_split
+        isend: true
+        T5C0:
+          ident: T5C0
+          name: IFNGR_KLRB1_GPR183_CCR6
+        T5C1:
+          ident: T5C1
+          name: KLRD1_TRDC_TRGC2
+      T4C4:
+        ident: T4C4
+        name: CCR7_FOS_JUN_activated
+        notes: not_actually_split
+        isend: true
+        T5C0:
+          ident: T5C0 
+          name: GPR183_CCR7_CXCR4_AREG
+        T5C1:
+          ident: T5C1
+          name: KLRB1_CCL5_CD8A  
+      T4C5:
+        ident: T4C5
+        name: GZMK_NCR3
+        notes: not_actually_split
+        isend: true
+        T5C0:
+          ident: T5C0
+          name: TRDC_TRGC2_SOX4
+        T5C1:
+          ident: T5C1 
+          name: KLRB1_CD69_RORA_IFNG
+      T4C6:
+        ident: T4C6
+        name: spillover_doublets_p044_dominated
+        isend: true
+        T5C0:
+          ident: T5C0 
+          name: ribo
+        T5C1:
+          ident: T5C1
+          name: CD8_CCL5
+        T5C2:
+          ident: T5C2 
+          name: JUN
+    T3C1:
+      ident: T3C1
+      name: ribosomal_p049_dominated
+      T4C0:
+        ident: T4C0
+        name: IGHA_Bclls_doublet
+        T5C0:
+          ident: T5C0
+          name: CD4_KLRB1_CD40LG_LTB
+          isend: true
+          T6C0:
+            ident: T6C0 
+            name: CCL5_IL32
+            T7C0:
+              ident: T7C0
+              name: bad_split
+            T7C1:
+              ident: T7C1
+              name: bad_split
+            T7C2:
+              ident: T7C2
+              name: bad_split
+            T7C3:
+              ident: T7C3
+              name: bad_split
+            T7C4:
+              ident: T7C4
+              name: bad_split
+            T7C5:
+              ident: T7C5
+              name: bad_split
+            T7C6:
+              ident: T7C6
+              name: bad_split
+          T6C1:
+            ident: T6C1
+            name: CD69_TNF
+            T7C0:
+              ident: T7C0 
+              name: mito 
+              T8C0:
+                ident: T8C0 
+                name: bad_split
+              T8C1:
+                ident: T8C1 
+                name: bad_split
+              T8C2:
+                ident: T8C2 
+                name: bad_split
+            T7C1:
+              ident: T7C1 
+              name: CD69_activated
+              T8C0:
+                ident: T8C0 
+                name: MTF2_bad_split
+              T8C1:
+                ident: T8C1 
+                name: CCL5_bad_split
+              T8C2:
+                ident: T8C2 
+                name: NDUFAF2_bad_split
+            T7C2:
+              ident: T7C2 
+              name: KLRB1_ribo
+          T6C2:
+            ident: T6C2
+            name: ribosomal
+            T7C0:
+              ident: T7C0 
+              name: MALAT1
+            T7C1:
+              ident: T7C1 
+              name: lower_quality
+            T7C2:
+              ident: T7C2 
+              name: KLRB1
+          T6C3:
+            ident: T6C3
+            name: HLA_CCL4_SEPP1
+        T5C1:
+          ident: T5C1
+          name: CD8A_CD8B_CD160
+          isend: true
+        T5C2:
+          ident: T5C2
+          name: FOXP3_CTLA4_TIGIT
+          isend: true
+      T4C1:
+        ident: T4C1
+        name: DEFA5_DEFA6_p050_dominated
+        notes: not_actually_split
+        isend: true
+        T5C0:
+          ident: T5C0
+          name: CD4_CD40LG_BHLHE40
+          isend: true
+        T5C1:
+          ident: T5C1
+          name: CD8A_CD8B_CD160
+          isend: true
+      T4C2:
+        ident: T4C2
+        name: TRDC_TRGC2_CD7_SOX4
+        notes: non_sig_split_on_p049_vs_p050
+        isend: true
+    T3C2:
+      ident: T3C2
+      name: doublets_p017_dominated
+      notes: non_sig_split_on_ribo_vs_mito 
+    T3C3:
+      ident: T3C3
+      name: activated_p035_dominated
+      notes: not_actually_split
+      isend: true
+      T4C0:
+        ident: T4C0
+        name: CD8A_CXCR4
+        isend: true
+      T4C1:
+        ident: T4C1
+        name: CD69_IFNG
+        isend: true
+    T3C4:
+      ident: T3C4
+      name: activated_cytotoxic
+      notes: not_actually_split
+      isend: true
+      T4C0:
+        ident: T4C0 
+        name: CD8A_CD3_TCRB
+        isend: true
+      T4C1:
+        ident: T4C1 
+        name: natural_killer
+        isend: true
+    T3C5:
+      ident: T3C5
+      name: cytotoxic_CD3
+      T4C0:
+        ident: T4C0
+        name: IL10_MAF
+        isend: true
+        T5C0:
+          ident: T5C0 
+          name: bad_split_ribo
+        T5C1:
+          ident: T5C1
+          name: bad_split_spillover
+        T5C2:
+          ident: T5C2
+          name: bad_split_spillover
+        T5C3:
+          ident: T5C3
+          name: bad_split_spillover
+      T4C1:
+        ident: T4C1
+        name: CD8A_CD8B_CCL5
+        isend: true
+        T5C0:
+          ident: T5C0
+          name: bad_split_ribo
+        T5C1:
+          ident: T5C1
+          name: bad_split_mito
+        T5C2:
+          ident: T5C2
+          name: bad_split_spillover
+      T4C2:
+        ident: T4C2
+        name: Plsma_Mstcl_doublets
+        isend: true
+      T4C3:
+        ident: T4C3
+        name: CCR7_IL7R_SELL_KLF2_naive
+        isend: true
+      T4C4:
+        ident: T4C4
+        name: activated
+        isend: true
+      T4C5:
+        ident: T4C5
+        name: KLRB1_HOPX_RORA
+        isend: true
+      T4C6:
+        ident: T4C6
+        name: MS4A1_CD79A_Bclls_doublets
+        isend: true
+      T4C7:
+        ident: T4C7
+        name: LGALS3_S100A10_Mphage_doublets
+        isend: true
+  T2C1:
+    ident: T2C1
+    name: resting_naive
+    T3C0:
+      ident: T3C0
+      name: KLRB1_TIGIT_MAF
+      isend: true
+      notes: non_sig_split_on_p034_vs_rest
+    T3C1:
+      ident: T3C1
+      name: SELL_SOX4_ribo
+      isend: true
+      notes: non_sig_split_on_p009_vs_rest
+    T3C2:
+      ident: T3C2
+      name: spillover_p050_dominated
+      isend: true
+      T4C0:
+        ident: T4C0 
+        name: bad_split
+      T4C1:
+        ident: T4C1 
+        name: bad_split_GPR183_TRBC
+      T4C2:
+        ident: T4C2 
+        name: bad_split_CD8B
+  T2C2:
+    ident: T2C2
+    name: cytotoxic
+    notes: not_actually_split
+    isend: true
+
+    T3C0:
+      ident: T3C0 
+      name: cytotoxic_GNLY
+      isend: true
+    T3C1:
+      ident: T3C1 
+      name: Type17_T_ILC
+      isend: true
+T1C1:
+  ident: T1C1
+  name: Bclls
+  notes: orig_non_sig_split_on_CD69_SELL_CCR7_vs_STMN1_HMGB2_TUBB
+  T2C0:
+    ident: T2C0
+    name: Bclls_noncycling
+    T3C0: 
+      ident: T3C0
+      name: CD27_memory
+      isend: true
+    T3C1: 
+      ident: T3C1
+      name: FCER2_IGHD_follicular_transitioning
+      isend: true
+    T3C2: 
+      ident: T3C2
+      name: p050_dominated_SPILLOVER
+      notes: non_sig_axis_of_CD52_naivite_vs_KLF2_KLF6
+    T3C3: 
+      ident: T3C3
+      name: p035_dominated
+      isend: true
+    T3C4:
+      ident: T3C4
+      name: IGLC3_IGLC6_IGLC7
+  T2C1:
+    ident: T2C1
+    name: Bclls_cycling
+    T3C0:
+      ident: T3C0
+      name: GerminalCenter_HLA-DQB1_CD40_CD79B
+      T4C0:
+        ident: T4C0
+        name: DarkZone_CXCR4_AICDA_Kappa
+      T4C1:
+        ident: T4C1
+        name: GerminalCenter_Ribosomal
+      T4C2:
+        ident: T4C2
+        name: LightZone_HLA_CD83
+      T4C3:
+        ident: T4C3
+        name: p034_dominated
+      T4C4:
+        ident: T4C4
+        name: DarkZone_CXCR4_AICDA_Lambda
+        isend: true
+        T5C0:
+          ident: T5C0
+          name: IGHM_transitioning
+        T5C1:
+          ident: T5C1
+          name: HLA-DRA_plasmablast
+        T5C2:
+          ident: T5C2
+          name: IGHA1_precurser
+        T5C3:
+          ident: T5C3
+          name: proliferative
+        T5C4:
+          ident: T5C4
+          name: proliferative
+        T5C5:
+          ident: T5C5
+          name: naive
+        T5C6:
+          ident: T5C6
+          name: naive
+        T5C7:
+          ident: T5C7
+          name: naive
+        T5C8:
+          ident: T5C8
+          name: naive
+        T5C9:
+          ident: T5C9
+          name: naive
+        T5C10:
+          ident: T5C10
+          name: naive
+        T5C11:
+          ident: T5C11
+          name: naive
+        T5C12:
+          ident: T5C12
+          name: naive
+        T5C13:
+          ident: T5C13
+          name: naive
+        T5C14:
+          ident: T5C14
+          name: naive
+        T5C15:
+          ident: T5C15
+          name: naive
+    T3C1:
+      ident: T3C1
+      name: proliferating_DarkZone
+    T3C2:
+      ident: T3C2
+      name: tcll_doublets
+      comments: interesting_doublet_cluster
+T1C2:
+  ident: T1C2
+  name: Epith
+  T2C0:
+    ident: T2C0
+    name: absorbative_p44dominated
+    T3C0:
+      ident: T3C0
+      name: APOA_late_entero
+    T3C1:
+      ident: T3C1
+      name: LIPH_ELF3_SQSTM1_entero
+      isend: true
+      T4C0:
+        ident: T4C0 
+        name: early_mid
+        T5C0:
+          ident: T5C0 
+          name: entero
+          T6C0:
+            ident: T6C0 
+            name: bad_split_GSTA1_TSPAN8_early_lowqual_IGKC
+          T6C1:
+            ident: T6C1 
+            name: bad_split_MT2A_MT2A
+          T6C2:
+            ident: T6C2 
+            name: bad_split_LIPH_unknown
+          T6C3:
+            ident: T6C3 
+            name: bad_split_GSTA1_TSPAN8_early
+          T6C4:
+            ident: T6C4 
+            name: bad_split
+          T6C5:
+            ident: T6C5 
+            name: bad_split
+          T6C6:
+            ident: T6C6 
+            name: bad_split
+        T5C1:
+          ident: T5C1 
+          name: entero
+          T6C0:
+            ident: T6C0
+            name: ribo
+            T7C0:
+              ident: T7C0 
+              name: late_mid
+            T7C1:
+              ident: T7C1
+              name: ribo
+            T7C2:
+              ident: T7C2
+              name: mito
+            T7C3:
+              ident: T7C3
+              name: NRBP1_ribo
+          T6C1:
+            ident: T6C1
+            name: PRAP1_ATP5D_mid
+          T6C2:
+            ident: T6C2
+            name: SLC25A5_mid
+            T7C0:
+              ident: T7C0 
+              name: bad_split
+            T7C1:
+              ident: T7C1
+              name: mito
+            T7C2:
+              ident: T7C2
+              name: ribo
+        T5C2:
+          ident: T5C2 
+          name: Plsma_doublet
+          T6C0:
+            ident: T6C0
+            name: APOA_entero
+          T6C1:
+            ident: T6C1
+            name: mito
+          T6C2:
+            ident: T6C2
+            name: ribo
+      T4C1:
+        ident: T4C1 
+        name: late_mid
+      T4C2:
+        ident: T4C2 
+        name: mid
+        T5C0:
+          ident: T5C0 
+          name: ribo
+        T5C1:
+          ident: T5C1 
+          name: mito
+          T6C0:
+            ident: T6C0 
+            name: mito
+          T6C1:
+            ident: T6C1
+            name: entero_all_stages
+          T6C2:
+            ident: T6C2
+            name: mid_late_entero
+        T5C2:
+          ident: T5C2 
+          name: bad_split_entero
+          T6C0:
+            ident: T6C0 
+            name: mito
+          T6C1:
+            ident: T6C1
+            name: badsplit
+          T6C2:
+            ident: T6C2
+            name: ribo
+    T3C2:
+      ident: T3C2
+      name: glutathione_early_entero_GSTA
+  T2C1:
+    ident: T2C1
+    name: crypt_OLFM4_AGR2
+    T3C0:
+      ident: T3C0
+      name: crypt_based_entero
+      T4C0:
+        ident: T4C0
+        name: early_absorbtive
+      T4C1:
+        ident: T4C1
+        name: mitochondrial
+        isend: true
+        notes: 12 clusters, possibly recover 2-3 entero clusters
+      T4C2:
+        ident: T4C2
+        name: early_absorbtive_TPT1_CCL25
+      T4C3:
+        ident: T4C3
+        name: Tuft
+    T3C1:
+      ident: T3C1
+      name: early_mid_entero_p044_dominated
+      T4C0:
+        ident: T4C0
+        name: TK1_DHFR_H2AZ
+      T4C1:
+        ident: T4C1
+        name: mitochondrial
+      T4C2:
+        ident: T4C2
+        name: GSTA1_CBR1
+      T4C3:
+        ident: T4C3
+        name: OLFM4_SOX4
+      T4C4:
+        ident: T4C4
+        name: B3GNT7
+      T4C5:
+        ident: T4C5
+        name: AGR2_CCL25
+      T4C6:
+        ident: T4C6
+        name: FABP1
+      T4C7:
+        ident: T4C7
+        name: CTGF_ATF3
+      T4C8:
+        ident: T4C8
+        name: ANXA10_VSIG2_LYZ
+      T4C9:
+        ident: T4C9
+        name: Proliferating
+      T4C10:
+        ident: T4C10
+        name: BEST4_CFTR_SPIB
+    T3C2:
+      ident: T3C2
+      name: mid_entero_p044_dominated
+      isend: true
+    T3C3:
+      ident: T3C3
+      name: StemCell
+      T4C0: 
+        ident: T4C0
+        name: LGR5_OLFM4
+      T4C1:
+        ident: T4C1
+        name: HLA_CCL15_CCL25
+      T4C2:
+        ident: T4C2
+        name: APOA_p044_domainted  
+    T3C4:
+      ident: T3C4
+      name: mito
+    T3C5:
+      ident: T3C5
+      name: proliferating
+    T3C6:
+      ident: T3C6
+      name: doublets_tcll
+      notes: probably_stop_splitting_but_has_some_interesting_doublets
+      isend: true
+    T3C7:
+      ident: T3C7
+      name: ALDOB_enterocyte
+    T3C8:
+      ident: T3C8
+      name: goblet
+      T4C0:
+        ident: T4C0
+        name: REG4_SPINK4_TFF3
+      T4C1:
+        ident: T4C1
+        name: crypt_based
+      T4C2:
+        ident: T4C2
+        name: mitochondrial
+      T4C3:
+        ident: T4C3
+        name: CLCA1_ZG16_villi_based
+    T3C9:
+      ident: T3C9
+      name: paneth
+      isend: true
+    T3C10:
+      ident: T3C10
+      name: enteroendocrine
+  T2C2:
+    ident: T2C2
+    name: goblet
+T1C3:
+  ident: T1C3
+  name: Mloid
+  T2C0:
+    ident: T2C0
+    name: macrophage_C1Q_CD63_CD14_AXL
+    isend: true
+  T2C1:
+    ident: T2C1
+    name: dendritic_CLECL10A_CD1C_CD207
+    T3C0:
+      ident: T3C0
+      name: CSF2RA_LTB_RUNX3
+      T4C0:
+        ident: T4C0
+        name: HLADQ_ribo
+      T4C1:
+        ident: T4C1
+        name: HLADQ_ribo
+      T4C2:
+        ident: T4C2
+        name: TMEM176_immature
+      T4C3:
+        ident: T4C3
+        name: LILRA2
+      T4C4:
+        ident: T4C4
+        name: IL22RA2_BTLA_LTB
+    T3C1:
+      ident: T3C1
+      name: doublets_plasma
+    T3C2:
+      ident: T3C2
+      name: doublets_plasma
+    T3C3:
+      ident: T3C3
+      name: S100A8_S100A9
+    T3C4:
+      ident: T3C4
+      name: HLADQ_HLADR_CD207
+    T3C5:
+      ident: T3C5
+      name: C1Q_VSIG4
+    T3C6:
+      ident: T3C6 
+      name: migratory_CD207_FSCN1
+    T3C7:
+      ident: T3C7 
+      name: doublets_enterocyte
+  T2C2:
+    ident: T2C2
+    name: macrophage_chemokine
+    T3C0:
+      ident: T3C0
+      name: HLADQ_IFITM3_CXCL3_F13A1
+      isend: true
+    T3C1:
+      ident: T3C1 
+      name: doublets
+      isend: true
+    T3C2:
+      ident: T3C2 
+      name: LYZ
+      isend: true
+  T2C3:
+    ident: T2C3
+    name: doublets_mito_dendritic
+    T3C0:
+      ident: T3C0
+      name: doublets
+      isend: true
+    T3C1:
+      ident: T3C1 
+      name: dendritic_CLEC10A_CD207
+      isend: true
+    T3C2:
+      ident: T3C2 
+      name: dendritic_CLEC10A_IL1B
+      isend: true
+    T3C3:
+      ident: T3C3
+      name: dendritic_CLEC9A_IRF8
+      isend: true
+    T3C4:
+      ident: T3C4 
+      name: mito_high
+      isend: true
+  T2C4:
+    ident: T2C4
+    name: doublets_plasma_macrophage
+    notes: not_actually_split
+    isend: true
+    T3C0:
+      ident: T3C0
+      name: mito_high
+      isend: true
+    T3C1:
+      ident: T3C1
+      name: HLADR_C1Q_CD14_ITBGB7
+      isend: true
+  T2C5:
+    ident: T2C5
+    name: macrophage_tissue_MMP_APOE_CD68
+    notes: not_actually_split
+    isend: true
+    T3C0:
+      ident: T3C0 
+      name: APOE_APOC1
+    T3C1:
+      ident: T3C1
+      name: activated_IL1B
+  T2C6:
+    ident: T2C6
+    name: doublets_lymphoid
+    T3C0:
+      ident: T3C0
+      name: doublets_lymphocytes
+    T3C1:
+      ident: T3C1
+      name: macrophage
+    T3C2:
+      ident: T3C2 
+      name: plasmacytoid_dendritic
+    T3C3:
+      ident: T3C3
+      notes: ask_jose??? LGALS2_FCER1A
+      name: Ribo_p009dominated
+    T3C4:
+      ident: T3C4
+      name: CQ1A_CQ1C_macrophage
+    T3C5:
+      ident: T3C5
+      name: IL32_KLDR1
+    T3C6:
+      ident: T3C6
+      name: plasmacytoid_dendritic
+    T3C7:
+      ident: T3C7
+      name: FCER1A_CD1E_dendritic
+  T2C7:
+    ident: T2C7
+    name: dendritic_CLEC9A_BATF3_IDO1
+    isend: true
+  T2C8:
+    ident: T2C8
+    name: doublets_stromal
+    isend: true
+  T2C9:
+    ident: T2C9
+    name: proliferating
+    notes: not_actually_split
+    isend: true
+    T3C0:
+      ident: T3C0 
+      name: PLAC8_IDO1_CD52
+    T3C1:
+      ident: T3C1 
+      name: macrophage_C1Q_APOE
+  T2C10:
+    ident: T2C10
+    name: dendritic_migratory_CCR7_FSCN1
+    isend: true
+T1C4:
+  ident: T1C4
+  name: IGA_IGK_Plsma
+  notes: within this the three big tiers are defined by doublets
+  T2C0:
+    ident: T2C0 
+    name: Plsma_1
+    T3C0:
+      ident: T3C0
+      name: Plsma
+    T3C1:
+      ident: T3C1
+      name: Plsma
+    T3C2:
+      ident: T3C2
+      name: spill_epi
+    T3C3:
+      ident: T3C3
+      name: Plsma
+    T3C4:
+      ident: T3C4
+      name: Plsma 
+    T3C5:
+      ident: T3C5
+      name: IGKV_unique
+    T3C6:
+      ident: T3C6
+      name: CD79A
+    T3C7:
+      ident: T3C7
+      name: doublet_tcll
+    T3C8:
+      ident: T3C8
+      name: Plsma
+    T3C9:
+      ident: T3C9
+      name: IGKV_IGLV_unique
+    T3C10:
+      ident: T3C10
+      name: Bclls
+    T3C11:
+      ident: T3C11
+      name: IGG
+    T3C12:
+      ident: T3C12
+      name: mito_high
+    T3C13:
+      ident: T3C13
+      name: spill_epi
+  T2C1:
+    ident: T2C1
+    name: Plsma_2
+    T3C0:
+      ident: T3C0
+      name: spill_epi
+    T3C1:
+      ident: T3C1
+      name: IGKV_unique
+    T3C2:
+      ident: T3C2
+      name: spill_epi
+    T3C3:
+      ident: T3C3
+      name: ribosomal
+    T3C4:
+      ident: T3C4
+      name: doublet_stromal
+    T3C5:
+      ident: T3C5
+      name: JCHAIN
+    T3C6:
+      ident: T3C6
+      name: spill_epi
+    T3C7:
+      ident: T3C7
+      name: activated
+    T3C8:
+      ident: T3C8
+      name: spill_epi
+    T3C9:
+      ident: T3C9
+      name: spill_epi
+  T2C2:
+    ident: T2C2
+    name: doublets
+    T3C0:
+      ident: T3C0
+      name: doublets_mast
+    T3C1:
+      ident: T3C1
+      name: doublets_stromal
+    T3C2:
+      ident: T3C2
+      name: doublets_epithelial
+    T3C3:
+      ident: T3C3
+      name: doublets_myeloid
+T1C5:
+  ident: T1C5
+  name: Fibro
+  T2C0:
+    ident: T2C0
+    name: CFD_PTN_PLTP
+  T2C1:
+    ident: T2C1
+    name: FBLN1_CCL11_CFD_FABP5_TNC
+    notes: not_actually_split
+    isend: true
+    T3C0:
+      ident: T3C0 
+      name: OGN_TNC_SRPX
+    T3C1:
+      ident: T3C1 
+      name: CXCL14_CTSC_APOE
+  T2C2:
+    ident: T2C2
+    name: CXCL14_ADAMDEC1
+  T2C3:
+    ident: T2C3
+    name: APOE_CCL8_CCL11
+    T3C0:
+      ident: T3C0
+      name: ACTA2_CCL8_PTCH1
+    T3C1:
+      ident: T3C1
+      name: COL3A1
+    T3C2:
+      ident: T3C2
+      name: schwann_PMP22_MFAP4_LMNA_ACKR3
+  T2C4:
+    ident: T2C4
+    name: CPM_EDRNB_F3_POSTN_hirschsprung
+  T2C5:
+    ident: T2C5
+    name: CCL13_CCL11_LUM_IGF1
+  T2C6:
+    ident: T2C6
+    name: doublet_tcll
+  T2C7:
+    ident: T2C7 
+    name: tcllzonestromal_CCL19_CCL21_FDCSP
+    T3C0:
+      ident: T3C0
+      name: tcllzonestromal_CCL19_CCL21
+    T3C1:
+      ident: T3C1 
+      name: ADAMDEC1_CFD_CCL11_APOE
+    T3C2:
+      ident: T3C2 
+      name: TNFSF11_LGALS1_CD9
+    T3C3:
+      ident: T3C3
+      name: C3_mito
+  T2C8:
+    ident: T2C8 
+    name: doublet_mito
+  T2C9:
+    ident: T2C9
+    name: ADAMDEC1_FBLN1_SEPP1_ASPN
+  T2C10:
+    ident: T2C10
+    name: doublet_tcll
+  T2C11:
+    ident: T2C11
+    name: myofibroblast_MYH11_ACTA2_ACTG2
+    T3C0:
+      ident: T3C0 
+      name: myofibroblast_ACTG2_MYH11
+    T3C1:
+      ident: T3C1
+      name: CXCL14_ADAMDEC1_ABCA6
+    T3C2:
+      ident: T3C2
+      name: CFD_FBLN1_CCL11
+  T2C12:
+    ident: T2C12
+    name: ADAMDEC1_LUM_CFH_IFITM1
+  T2C13:
+    ident: T2C13
+    name: doublet_epithelial
+  T2C14:
+    ident: T2C14
+    name: doublet_mast
+  T2C15:
+    ident: T2C15
+    name: doublet_bcll
+  T2C16:
+    ident: T2C16
+    name: doublet_tcll
+  T2C17:
+    ident: T2C17
+    name: doublet_epithelial
+T1C6:
+  ident: T1C6
+  name: IGA_IGL_Plsma
+  T2C0:
+    ident: T2C0 
+    name: IGLC2_IGLC3
+  T2C1:
+    ident: T2C1
+    name: IGLC2_IGLC3
+    notes: not_actually_split
+    isend: true
+    T3C0:
+      ident: T3C0
+      name: plasma
+    T3C1:
+      ident: T3C1
+      name: spill_epi 
+  T2C2:
+    ident: T2C2 
+    name: IGLL5_JCHAIN
+    isend: true
+  T2C3:
+    ident: T2C3
+    name: doublets_Tcll
+  T2C4:
+    ident: T2C4
+    name: doublets_stromal
+T1C7:
+  ident: T1C7
+  name: Mstcl
+  T2C0:
+    ident: T2C0
+    name: Mstcl
+    isend: true
+  T2C1:
+    ident: T2C1
+    name: doublets_plasma
+    isend: true
+  T2C2:
+    ident: T2C2
+    name: doublets_epithelial
+    isend: true
+  T2C3:
+    ident: T2C3
+    name: doublets_tcll
+    isend: true
+T1C8:
+  ident: T1C8
+  name: Endth
+  T2C0:
+    ident: T2C0
+    name: postcapillaryvenules_ACKR1_MADCAM1
+    isend: true
+  T2C1:
+    ident: T2C1
+    name: capillaries_PLVAP_FLT1
+    isend: true
+  T2C2:
+    ident: T2C2
+    name: arterioles_FRZB_NOTCH3
+    notes: not_actually_split
+    isend: true
+    T3C0:
+      ident: T3C0 
+      name: TAGLN_MYH11_ACTG2
+    T3C1:
+      ident: T3C1
+      name: PLVAP_CD320_RAMP
+  T2C3:
+    ident: T2C3
+    name: doublets_plasma
+  T2C4:
+    ident: T2C4 
+    name: lymphatics_CCL21_LYVE1_PROX1
+    T3C0:
+      ident: T3C0
+      name: ribosomal 
+    T3C1:
+      ident: T3C1
+      name: IGF2
+    T3C2:
+      ident: T3C2
+      name: mitochondrial 
+    T3C3:
+      ident: T3C3
+      name: MYADM_DDX34
+  T2C5:
+    ident: T2C5
+    name: doublets_tcll
+    notes: not_actually_split
+    isend: true
+    T3C0:
+      ident: T3C0
+      name: ribosomal  
+    T3C1:
+      ident: T3C1 
+      name: SPARCL1_CD320_HEV
+  T2C6:
+    ident: T2C6
+    name: doublets_epithelial
+    isend: true
+  T2C7:
+    ident: T2C7 
+    name: activated_endothelium
+    isend: true 
+T1C9:
+  ident: T1C9
+  name: Glial
+  T2C0:
+    ident: T2C0 
+    name: doublets_plasma_myeloid
+  T2C1:
+    ident: T2C1 
+    name: activated_CYR61
+  T2C2:
+    ident: T2C2 
+    name: doublets_tcll
+  T2C3:
+    ident: T2C3 
+    name: CD9_SPARC_CRYAB
+  T2C4:
+    ident: T2C4 
+    name: IGFBP7_SCN7A_HAND2
+  T2C5:
+    ident: T2C5 
+    name: CYR61_SPARC
+  T2C6:
+    ident: T2C6
+    name: folliculardendritic_FDCSP_CR2_SPIB_CXCL13
+  T2C7:
+    ident: T2C7
+    name: mitochondrial
+  T2C8:
+    ident: T2C8
+    name: BCYRN1_GPR155_RHOB_VWA1
+T1C10:
+  ident: T1C10
+  name: IGM_Plsma
+  notes: not_actually_split
+  isend: true
+  T2C0:
+    ident: T2C0 
+    name: IGKC
+  T2C1:
+    ident: T2C1
+    name: IGLC
+T1C11:
+  ident: T1C11
+  name: IGG_Plsma_Bcll
+  T2C0:
+    ident: T2C0
+    name: IGKC
+  T2C1:
+    ident: T2C1
+    name: IGLC1_IGLC2
+  T2C2:
+    ident: T2C2
+    name: Bcll_like
+    T3C0:
+      ident: T3C0
+      name: mature_IGHG1
+      T4C0:
+        ident: T4C0
+        name: CD2_Tclls_doublet
+      T4C1:
+        ident: T4C1
+        name: IGKC
+      T4C2:
+        ident: T4C2
+        name: Bcll_CD37_CD20
+      T4C3:
+        ident: T4C3
+        name: Marginal_PPIB_ISG20_MZB1_transitioning_Bclls
+    T3C1:
+      ident: T3C1
+      name: Tclls_doublets
+    T3C2:
+      ident: T3C2
+      name: Bclls
+

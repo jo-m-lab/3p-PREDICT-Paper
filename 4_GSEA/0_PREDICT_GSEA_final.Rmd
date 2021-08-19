@@ -1,0 +1,398 @@
+---
+title: 'PREDICT: GSEA in RISK and E-MTAB-7604 cohorts'
+author: "Veronika Niederlova"
+date: "6/14/2021"
+output:
+  rmdformats::downcute: 
+    code_folding: hide
+---
+
+<style>
+
+#div.white pre { background-color:white; color:black}
+div.white pre.r { background-color:white; color:black}
+
+</style>
+
+<div class = "white">
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+	echo = TRUE,
+	error = TRUE,
+	fig.height = 3,
+	fig.width = 5,
+	message = FALSE,
+	warning = FALSE,
+	cache = TRUE
+)
+
+library("Matrix")
+library(Seurat)
+library(DT)
+library(cowplot)
+library(tidyverse)
+library(dplyr)
+library("ggVennDiagram")
+library(ggplot2)
+library(fgsea)
+library(kableExtra)
+library(DESeq2)
+
+rank_score_func <- function(df){
+  
+  df <- df %>% mutate(score = -1*log(p_val_adj+(10^-310))*avg_logFC*(pct.1/(pct.2+10^-300)))
+  
+  return(df)
+}
+
+
+# Paths to data files
+path_data <- "data/"
+path_predict_seu <- "~/PRIMUS/data/48_lab/Project scRNAseq/Scripts Verca/2021-04-30_PREDICT_preliminary/data/paper_final.rds"
+
+```
+
+In this notebook, we provide the code to perform GSEA analysis of markers of the most severe Crohn's disease from the PREDICT cohort in two other cohorts: RISK cohort and Belgium cohort. Data of RISK cohort were obtained from the [github repository](https://github.com/effiken/martin_et_al_cell_2019) associated with the study `Single-Cell Analysis of Crohn’s Disease Lesions Identifies a Pathogenic Cellular Module Associated with Resistance to Anti-TNF Therapy` by Martin et al., Cell, 2019. Data from the Belgium cohort were obtained from Array-Express under the accession number [E-MTAB-7604](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-7604/).
+
+The analysis has three main steps:
+
+1. Select markers from PREDICT cohort.
+2. Load and process the data from RISK cohort.
+3. Load and process the data from E-MTAB-7604 cohort.
+
+***
+
+# PART 1: Prepare data from PREDICT cohort
+
+Let's load the PREDICT Seurat object and the markers of all end clusters from tiered clustering (Supp. Table XY). Keep in mind that the .rds object is really huge and might consume as much as ~40 GB of your RAM. These are the 25 end clusters driving the anti-TNF response explanatory PC2. These clusters will be used for marker selection.
+
+```{r}
+# seu <- readRDS(path_predict_seu)
+
+markers_state <- as.data.frame(read_delim(paste0(path_data,"Supp_tables/CD14_03_cellstate_markerstop50sig.tsv"), "\t", escape_double = FALSE, trim_ws = TRUE))
+
+
+top_pos_pc2 <-  paste0("CD.",c("T.MT-CO2.MT-CO1","EC.GNAT3.TRPM5","EC.RBP2.CYP3A4","cDC2.CLEC10A.FCGR2B","Myeloid.MKI67.IGKC","Goblet.FCGBP.HES6","EC.ADH1C.EDN1","Mcell.CSRP2.SPIB","EC.FABP6.PLCG2","EC.MTRNR2L1.MT-ND3","T.MT-CO2.CCR7","EC.ADH1C.RPS4Y1","T.IFI44L.PTGER4","cDC2.CD1C.NDRG2","Goblet.FCGBP.ITLN1","EC.FABP1.ADIRF","EC.GSTA2.TMPRSS15","cDC2.CLEC10A.CD1E","Mac.CXCL8.HES1","cDC2.CD1C.CD207","Mono/cDC2.CLEC10A.SDS","T.LAG3.BATF","Secretory.GSTA1.REG1B","EC.ADH1C.GSTA1","EpithStem.LINC00176.RPS4Y1"))
+
+top_neg_pc2 <-  paste0("CD.",c(
+  "Mono.FCN1.LYST","NK.MKI67.GZMA","Mono.CXCL10.TNF","T.CARD16.GB2","Mono.FCN1.S100A4","Mono/Mac.CXCL10.CXCL11","NK.GNLY.GZMB","EC.OLFM4.MT-ND2","NK.GNLY.IFNG","T.MKI67.IL22","NK.GNLY.FCER1G","Mac/DC.CXCL10.CLEC4E","T.MKI67.IFNG","T.MKI67.FOXP3","Mono/Mac.CXCL10.FCN1","T.GNLY.CSF2","EC.NUPR1.LCN2","Mac.CXCL3.APOC1","pDC.IRF7.IL3RA","Mono.CXCL3.FCN1","Mac.C1QB.CD14","Goblet.RETNLB.ITLN1","T.CCL20.RORA","T.MAF.CTLA4","cDC2.CD1C.AREG"))
+
+kableExtra::kable(data.frame(PC2_top25_neg = top_neg_pc2[order(top_neg_pc2)],
+                             PC2_top25_pos = top_pos_pc2[order(top_pos_pc2)])) %>%
+  kable_styling(full_width = F, font_size = 10, bootstrap_options = c("hover", "condensed", "responsive")) %>%  column_spec(1:2, background = "white", color = "black")
+
+```
+
+We will select top 10 markers of each of these clusters. The selection is based on rank score function (see Methods). Duplicate hits are only counted once and genes that appear as hits for both positive and negative PC2 clusters are filtered out. 
+
+The final gene list for PC2_top25_neg contains 92 genes:
+
+```{r}
+markers_top_neg_pcs <- markers_state %>% dplyr::filter(cluster %in% c(top_neg_pc2))
+markers_top_pos_pcs <- markers_state %>% dplyr::filter(cluster %in% c(top_pos_pc2)) 
+
+markers_top_neg_pcs <- rank_score_func(markers_top_neg_pcs)
+markers_top_pos_pcs <- rank_score_func(markers_top_pos_pcs)
+
+markers_top_neg_pcs <-  markers_top_neg_pcs %>% group_by(cluster) %>% slice_max(order_by = score, n = 10)
+markers_top_pos_pcs <- markers_top_pos_pcs %>% group_by(cluster) %>% slice_max(order_by = score, n = 10)
+
+markers_top_neg_pcs_genes <- unique(markers_top_neg_pcs$gene)
+markers_top_pos_pcs_genes <- unique(markers_top_pos_pcs$gene)
+
+markers_top_neg_pcs_genes_filt <- markers_top_neg_pcs_genes[which(markers_top_neg_pcs_genes %in% markers_top_pos_pcs_genes == F)]
+markers_top_pos_pcs_genes_filt <- markers_top_pos_pcs_genes[which(markers_top_pos_pcs_genes %in% markers_top_neg_pcs_genes == F)]
+
+knitr::kable(matrix(c(markers_top_neg_pcs_genes_filt[order(markers_top_neg_pcs_genes_filt)], rep("",4)), ncol = 8)) %>%
+  kable_styling(full_width = F, font_size = 10,bootstrap_options = c("hover", "condensed", "responsive")) %>%  column_spec(1:8, background = "white", color = "black")
+
+```
+
+The final gene list for PC2_top25_pos contains 103 genes:
+
+```{r}
+knitr::kable(matrix(c(markers_top_pos_pcs_genes_filt[order(markers_top_pos_pcs_genes_filt)], ""), ncol = 8)) %>%
+  kable_styling(full_width = F, font_size = 10,bootstrap_options = c("hover", "condensed", "responsive")) %>%  column_spec(1:8, background = "white", color = "black")
+
+```
+
+***
+
+# PART 2: RISK cohort
+
+To load data from RISK cohort, please download the `bulk_data.rd` file from [this github repository](https://github.com/effiken/martin_et_al_cell_2019). The path to the file in the repository is `martin_et_al_cell_2019/input/external_cohorts_data/bulk_data.rd`. For convenience, we also provide this file together with our code. We assume that this file is stored in the `/data/RISK/` folder.
+
+## Load and extract data 
+Let's load the file and filter participants from RISK cohort, whose info about the outcome of anti-TNF treatment is available. 
+
+```{r}
+martin_bulk_data <- load(paste0(path_data,"RISK/bulk_data.rd"))
+
+# Metadata are stored in the slot design
+bulk_metadata <- bulk$design
+
+# Count matrix is stored in the slot raw
+bulk_matrix <- bulk$raw
+
+# Filtering - only genes with reported expression and only RISK patients with anti-TNF response info
+bulk_risk_response_names <- rownames(bulk_metadata %>% dplyr::filter(is.na(response)==F))
+bulk_matrix_filt <- bulk_matrix[which(is.na(rowSums(bulk_matrix))==F),which(colnames(bulk_matrix) %in% bulk_risk_response_names)]
+
+
+response <- bulk_metadata$response
+names(response) <- rownames(bulk_metadata)
+
+response_filt <- response[which(names(response) %in% colnames(bulk_matrix_filt))]
+response_filt <- response_filt[match(names(response_filt),colnames(bulk_matrix_filt))]
+```
+
+## Calculate fold changes using Seurat
+
+Because the input data is already FKPM normalized and DESeq2 requires raw counts as input, we will use Seurat for FoldChange calculation. 
+
+```{r}
+# Create Seurat object and add response metadata
+RISK_seurat <- CreateSeuratObject(bulk_matrix_filt)
+RISK_seurat <- AddMetaData(RISK_seurat, response_filt, col.name = "response")
+
+# Calculate fold changes for all genes in responders vs. non-responders
+Idents(RISK_seurat) <- RISK_seurat$response
+fc_risk_seurat <- FoldChange(RISK_seurat, ident.1 = "R", ident.2 = "NR")
+
+# The calculated fold changes will be used as input for GSEA
+fc_risk_seurat.input <- as.numeric(fc_risk_seurat$avg_log2FC)
+names(fc_risk_seurat.input) <- rownames(fc_risk_seurat)
+fc_risk_seurat.input <- fc_risk_seurat.input[which(!is.na(fc_risk_seurat.input))]
+
+# Prerank genes with similar fold change
+set.seed(123)
+fc_risk_seurat.input <- fc_risk_seurat.input[rank(fc_risk_seurat.input,  ties.method = "random")]
+```
+
+## Plot GSEA results
+
+```{r fig.width=12}
+
+fgseaRes_risk_neg <- fgsea(pathways = list(our_list = markers_top_neg_pcs_genes_filt), 
+                           stats = fc_risk_seurat.input)
+
+p1 <- plotEnrichment(markers_top_neg_pcs_genes_filt, fc_risk_seurat.input) + labs(title="\n\nTOP neg PC2 clusters", subtitle = paste0("p-value = ",format.pval(fgseaRes_risk_neg$pval, digits = 2)))
+
+
+fgseaRes_risk_pos <- fgsea(pathways = list(our_list = markers_top_pos_pcs_genes_filt), 
+                           stats    = fc_risk_seurat.input)
+
+p2 <- plotEnrichment(markers_top_pos_pcs_genes_filt, fc_risk_seurat.input) + labs(title="\n\nTOP pos PC2 clusters", subtitle = paste0("p-value = ",format.pval(fgseaRes_risk_pos$pval, digits = 2)))
+
+cowplot::plot_grid(p1,p2)
+
+```
+
+***
+
+# PART 3: DATASET E_MTAB_7604
+
+The second dataset can be obtained from Array-Express under the accession number [E-MTAB-7604](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-7604/). It should be unpacked and stored in the folder `data/E_MTAB_7604/`. 
+
+## Load and merge data
+We will load counts of all provided patients and bind them into a gene expression matrix. The cohort contains samples from different locations and also from patients with different treatments:
+
+```{r}
+emtab_7604 <- c('GC058859', 'GC058865', 'GC058866', 'GC058872', 'GC058874', 'GC058911', 'GC050149', 'GC050152',
+                'GC050158', 'GC050162', 'GC050173', 'GC050174', 'GC050260', 'GC050265', 'GC050272', 'GC050281', 'GC050282', 'GC050312', 'GC050318', 'GC050320', 'GC050321', 'GC050322', 'GC058827', 'GC058833', 'GC058835', 'GC058840', 'GC058849', 'GC058851', 'GC058889', 'GC058897', 'GC058904', 'GC058910', 'GC049971', 'GC049992', 'GC049997', 'GC049998', 'GC050011', 'GC050016', 'GC050024', 'GC050040', 'GC050130', 'GC050131', 'GC050193')
+
+# Load raw counts from all patients and construct a dataframe
+df <- data.frame(gene = "")
+for(j in emtab_7604){
+  k <-  read_tsv(paste0(path_data,"E_MTAB_7604/",j,".count"), col_names = FALSE, 
+                 trim_ws = TRUE)
+  df_temp <- data.frame(gene = k$X1, value = k$X2)
+  colnames(df_temp)[2] <- j
+  df <- right_join(df, df_temp, by = "gene")
+}
+
+# Convert dataframe to matrix
+mtx <- as.matrix(df %>% dplyr::select(-gene))
+rownames(mtx) <- df$gene
+```
+
+```{r}
+# Load metadata
+E_MTAB_7604_sdrf <- read_delim(paste0(path_data,"E_MTAB_7604/E-MTAB-7604.sdrf.txt"), 
+                               "\t", escape_double = FALSE, trim_ws = TRUE)
+
+md_emtab_7604 <- as.data.frame(E_MTAB_7604_sdrf)
+md_emtab_7604$patient <- substr(md_emtab_7604$`Source Name`,1,8)
+md_emtab_7604 <- data.frame(patient = md_emtab_7604$patient,
+                            treatment = md_emtab_7604$`Factor Value[treatment]`,
+                            response = md_emtab_7604$`Characteristics[clinical history]`,
+                            site = md_emtab_7604$`Characteristics[organism part]`)
+
+# Counts of patients in the dataset
+knitr::kable(md_emtab_7604 %>% group_by(treatment, response, site) %>% tally()) %>%
+  kable_styling(full_width = F, font_size = 10,bootstrap_options = c("hover", "condensed", "responsive")) %>%  column_spec(1:4, background = "white", color = "black")
+```
+
+For the next analyses, we will separate samples from ileum and from colon.
+
+## Ileum
+
+### Create DESeq object and calculate fold changes
+
+```{r fig.width=10}
+# Prepare DeSeq input
+patients.ileum <- (md_emtab_7604 %>% dplyr::filter(site == "ileum"))$patient
+mtx.ileum <- mtx[,which(colnames(mtx) %in% patients.ileum)]
+featureData <- data.frame(gene=rownames(mtx.ileum))
+
+# Response metadata
+ileum.response <- c(md_emtab_7604 %>% dplyr::filter(patient %in% colnames(mtx.ileum)))$response
+names(ileum.response) <- c(md_emtab_7604 %>% dplyr::filter(patient %in% colnames(mtx.ileum)))$patient
+ileum.response <- ileum.response[match(colnames(mtx.ileum),names(ileum.response))]
+
+coldata <- data.frame(sample_type = factor(if_else(ileum.response == "responder","R","NR"),
+                                           levels = c("R","NR")))
+
+# Create a DESeq dataset
+
+dds.ileum <- DESeq2::DESeqDataSetFromMatrix(countData = mtx.ileum,
+                                            colData = coldata,
+                                            design= ~ sample_type) 
+
+rownames(dds.ileum) <- featureData$gene
+
+# Run DESeq2
+dds.ileum <- DESeq(dds.ileum)
+dds.ileum
+
+# Retrieve the results
+res.ileum <- results(dds.ileum)
+res.ileum_df <- data.frame(gene = rownames(res.ileum),
+                           pval = res.ileum@listData$pvalue,
+                           logfc = res.ileum@listData$log2FoldChange,
+                           padj = res.ileum@listData$padj)
+
+# Prepare GSEA input
+fc_emtab7604_ileum.input <- as.numeric(res.ileum_df$logfc)
+names(fc_emtab7604_ileum.input) <- res.ileum_df$gene
+fc_emtab7604_ileum.input <- fc_emtab7604_ileum.input[which(!is.na(fc_emtab7604_ileum.input))]
+
+# Prerank genes with similar FC
+set.seed(123)
+fc_emtab7604_ileum.input <- fc_emtab7604_ileum.input[rank(fc_emtab7604_ileum.input,  ties.method = "random")]
+
+# Run GSEA Top PC2 neg markers
+fgseaRes_emtab7604_ileum_neg <- fgsea(pathways = list(our_list = markers_top_neg_pcs_genes_filt), 
+                                      stats    = fc_emtab7604_ileum.input)
+
+
+p3 <- plotEnrichment(markers_top_neg_pcs_genes_filt, fc_emtab7604_ileum.input) + labs(title="\n\nTOP neg PC2 clusters", subtitle = paste0("p-value = ",format.pval(fgseaRes_emtab7604_ileum_neg$pval, digits = 2)))
+
+# Run GSEA Top PC2 pos markers
+
+fgseaRes_emtab7604_ileum_pos <- fgsea(pathways = list(our_list = markers_top_pos_pcs_genes_filt), 
+                                      stats    = fc_emtab7604_ileum.input)
+
+p4 <- plotEnrichment(markers_top_pos_pcs_genes_filt, fc_emtab7604_ileum.input) + labs(title="\n\nTOP pos PC2 clusters", subtitle = paste0("p-value = ",format.pval(fgseaRes_emtab7604_ileum_pos$pval, digits = 2)))
+
+cowplot::plot_grid(p3,p4)
+```
+
+## Colon
+
+### Create DESeq object and calculate fold changes
+
+```{r fig.width=10}
+# Prepare DeSeq input
+patients.colon <- (md_emtab_7604 %>% dplyr::filter(site == "colon"))$patient
+mtx.colon <- mtx[,which(colnames(mtx) %in% patients.colon)]
+featureData <- data.frame(gene=rownames(mtx.colon))
+
+# Response metadata
+colon.response <- c(md_emtab_7604 %>% dplyr::filter(patient %in% colnames(mtx.colon)))$response
+names(colon.response) <- c(md_emtab_7604 %>% dplyr::filter(patient %in% colnames(mtx.colon)))$patient
+colon.response <- colon.response[match(colnames(mtx.colon),names(colon.response))]
+
+coldata <- data.frame(sample_type = factor(if_else(colon.response == "responder","R","NR"),
+                                           levels = c("R","NR")))
+
+# Create a DESeq dataset
+
+dds.colon <- DESeq2::DESeqDataSetFromMatrix(countData = mtx.colon,
+                                            colData = coldata,
+                                            design= ~ sample_type) 
+
+rownames(dds.colon) <- featureData$gene
+
+# Run DESeq2
+dds.colon <- DESeq(dds.colon)
+dds.colon
+
+# Retrieve the results
+res.colon <- results(dds.colon)
+res.colon_df <- data.frame(gene = rownames(res.colon),
+                           pval = res.colon@listData$pvalue,
+                           logfc = res.colon@listData$log2FoldChange,
+                           padj = res.colon@listData$padj)
+
+# Prepare GSEA input
+fc_emtab7604_colon.input <- as.numeric(res.colon_df$logfc)
+names(fc_emtab7604_colon.input) <- res.colon_df$gene
+fc_emtab7604_colon.input <- fc_emtab7604_colon.input[which(!is.na(fc_emtab7604_colon.input))]
+
+# Prerank genes with similar FC
+set.seed(123)
+fc_emtab7604_colon.input <- fc_emtab7604_colon.input[rank(fc_emtab7604_colon.input,  ties.method = "random")]
+
+
+# Run GSEA Top PC2 neg markers
+fgseaRes_emtab7604_colon_neg <- fgsea(pathways = list(our_list = markers_top_neg_pcs_genes_filt), 
+                                      stats    = fc_emtab7604_colon.input)
+
+
+p5 <- plotEnrichment(markers_top_neg_pcs_genes_filt, fc_emtab7604_colon.input) + labs(title="\n\nTOP neg PC2 clusters", subtitle = paste0("p-value = ",format.pval(fgseaRes_emtab7604_colon_neg$pval, digits = 2)))
+
+# Run GSEA Top PC2 pos markers
+
+fgseaRes_emtab7604_colon_pos <- fgsea(pathways = list(our_list = markers_top_pos_pcs_genes_filt), 
+                                      stats    = fc_emtab7604_colon.input)
+
+p6 <- plotEnrichment(markers_top_pos_pcs_genes_filt, fc_emtab7604_colon.input) + labs(title="\n\nTOP pos PC2 clusters", subtitle = paste0("p-value = ",format.pval(fgseaRes_emtab7604_colon_pos$pval, digits = 2)))
+
+cowplot::plot_grid(p5,p6)
+```
+
+
+# Save the plots
+
+```{r}
+
+p_final <- cowplot::plot_grid(
+  cowplot::plot_grid(p1, p2, ncol = 2),
+  cowplot::plot_grid(p3, p4, ncol = 2),
+  cowplot::plot_grid(p5, p6, ncol = 2),
+  ncol = 1,
+  labels = c("RISK","E-MTAB-7604 ileum","E-MTAB-7604 colon"))
+
+dir.create(paste0("results/"))
+
+ggsave(p_final,
+       filename = paste0("results/GSEA_cohorts.png"),
+       device = "png",
+       width = 9,
+       height = 8)
+
+ggsave(p_final,
+       filename = paste0("results/GSEA_cohorts.eps"),
+       device = "eps",
+       width = 9,
+       height = 8)
+```
+
+# SessionInfo
+```{r}
+sessionInfo()
+```
+</div>
