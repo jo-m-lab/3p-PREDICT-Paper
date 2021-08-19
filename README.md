@@ -24,4 +24,4 @@ ARBOL tutorial: https://shaleklab.github.io/SCTieredClustering/
 
 Annotation Rank Score shiny app: https://kylekimler.shinyapps.io/shinyrank/
 
-GSEA analysis: https://jo-m-lab.github.io/3p-PREDICT-Paper/GSEA/PREDICT_GSEA_final.html
+GSEA analysis: https://jo-m-lab.github.io/3p-PREDICT-Paper/4_GSEA/PREDICT_GSEA_final.html
