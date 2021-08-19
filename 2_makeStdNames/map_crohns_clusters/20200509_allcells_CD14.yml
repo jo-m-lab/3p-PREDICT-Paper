@@ -1,0 +1,1141 @@
+ident: T0C0
+name: all-cells
+T1C0:
+  name: Tclls
+  T2C0:
+    name: KLRB1_IL7R_CCL5_CD3D_CD69
+    T3C0:
+      name: KLRB1_LTB
+    T3C1:
+      name: CD8A_CD8B_RUNX3_CD160
+    T3C2:
+      name: doublets_epithelial
+      T4C0:
+        name: KLRB1_TNFRSF13B_ICOS
+      T4C1:
+        name: FOS_JUN_activated_KLF6
+      T4C2:
+        name: CD8A_CD8B_CCL5  
+      T4C3:
+        name: FABP5_ALOX5AP_GZM
+    T3C3:
+      name: GZMA_IFNG
+    T3C4:
+      name: CD69_activated_FOS_JUN
+    T3C5:
+      name: doublets_plasma
+    T3C6:
+      name: TRDC_TRGC2_SOX4
+  T2C1:
+    name: CCR7_JUNB_CXCR4
+  T2C2:
+    name: ribosomal
+  T2C3:
+    name: IL32_BATF_TIGIT_CTLA4_CD27
+    T3C0:
+      name: ribosomal
+    T3C1:
+      name: doublets_epithelial
+    T3C2:
+      name: mitochondrial
+      T4C0:
+        name: TIGIT_ICOS
+      T4C1:
+        name: CXCR4_NR3C1
+      T4C2:
+        name: doublets_plasma
+    T3C3:
+      name: mitochondrial_IL32_CTLA4
+      isend: true
+    T3C4:
+      name: ALOX5AP_JUNB
+      isend: true
+    T3C5:
+      name: TNFRSF18_TNFRSF4_IL2RA_CTLA4_BATF
+      isend: true
+    T3C6:
+      name: KLRB1_PTGER4_RORA
+      isend: true
+    T3C7:
+      name: doublets_epithelial
+    T3C8:
+      name: CCR7_FOXP1_IKZF3_IL10
+    T3C9:
+      name: IFI44L_MX1_ISG15
+  T2C4:
+    name: IL7R_ANXA1_patient11_patient16
+    T3C0:
+      name: CD28_CCR6_ICOS
+      isend: true
+    T3C1:
+      name: CD8A_CD8B_CCL5
+    T3C2:
+      name: doublets_plasma_patient16
+      T4C0:
+        name: LTB_CD2_CCR6
+      T4C1:
+        name: MALAT1_JUNB
+      T4C2:
+        name: CD8A_CD8B_CCL5_CD160_HOPX
+      T4C3:
+        name: GNLY_NKG7_NCR3
+    T3C3:
+      name: TRDC_TRGC2_SOX4_GZMK
+    T3C4:
+      name: HSP
+    T3C5:
+      name: HSP_XIST
+  T2C5:
+    name: cytotoxic_GZM_NKG7_CCL5
+  T2C6:
+    name: mitochondrial
+    T3C0:
+      name: ribosomal
+      T4C0:
+        name: CXCR4_FOS_CD69
+      T4C1:
+        name: TNFRSF4_IL2RA_TIGIT
+    T3C1:
+      name: ribosomal_KLRB1
+    T3C2:
+      name: doublet_bcll
+    T3C3:
+      name: TRAC_CD3D_CXCR4
+      T4C0:
+        name: CCR7_CXCR4
+      T4C1:
+        name: CTLA4_TIGIT_IL2RA_TNFRSF18
+      T4C2:
+        name: doublets_plasma
+      T4C3:
+        name: CCL5_CD8A 
+      T4C4:
+        name: ribosomal
+      T4C5:
+        name: CD69_GZMH
+    T3C4:
+      name: doublets_epithelial
+  T2C7:
+    name: cytotoxic_GNLY_NKG7_FCER1G_HOPX
+    T3C0:
+      name: innate_GZMA_KLRB1_FCER1G_AREG_TYROBP
+    T3C1:
+      name: innate_SELL_KLRC1_AREG
+    T3C2:
+      name: HSP
+    T3C3:
+      name: innate_TRDC_TYROBP_XCL1
+    T3C4:
+      name: Tclls_CD3D_CCL20_CXCR6_IL26_TRAC_IFNG
+    T3C5:
+      name: Tclls_CD8A_CDB_TRAC_IL32_CD27
+    T3C6:
+      name: Tclls_ribosomal
+    T3C7:
+      name: FGFBP2_FCGR3A_CX3CR1_PRF1
+      T4C0:
+        name: FCER1G_TYROBP_KLRB1
+      T4C1:
+        name: CD3D_IL32
+      T4C2:
+        name: HSP
+    T3C8:
+      name: NFKB_CD69_IFNG
+    T3C9:
+      name: Tclls_mitochondrial
+    T3C10:
+      name: Tclls_IL32_TRAC_LAG3_CD69_IFNG
+    T3C11:
+      name: doublets_epithelial
+    T3C12:
+      name: doublet_bcll
+  T2C8:
+    name: cytotoxic_IEL_FCER1G_NKG7_TYROBP_CD160_AREG
+    isend: true 
+  T2C9:
+    name: doublets_plasma_epi_patient14
+    T3C0:
+      name: plasma
+    T3C1:
+      name: Tclls
+  T2C10:
+    name: FOS_JUN_activated_NFKB
+    T3C0:
+      name: FOS_JUN_EGR1_CCL5
+      T4C0:
+        name: TNFAIP3_KLF6
+      T4C1:
+        name: NKG7_GZMA_TNF
+      T4C2:
+        name: doublets_epithelial
+    T3C1:
+      name: CCL20_LTB_IFNG_CSF2
+    T3C2:
+      name: IFI44L_LY6E_ISG15_IL22
+  T2C11:
+    name: proliferating
+    T3C0:
+      name: ribosomal
+    T3C1:
+      name: CD27_IL2RA_CTLA4_BATF_TNFSRF4
+    T3C2:
+      name: IFNG_IL22_CCL20
+    T3C3:
+      name: FABP5_S100A4_HOPX
+    T3C4:
+      name: TYROBP_FCER1G_AREG_NKG7_GNLY
+    T3C5:
+      name: ribosomal
+      T4C0:
+        name: HSP
+      T4C1:
+        name: ribosomal
+      T4C2:
+        name: CXCR3_GPR171
+      T4C3:
+        name: proliferating
+      T4C4:
+        name: proliferating
+      T4C5:
+        name: CD27_GZMK
+    T3C6:
+      name: mitochondrial
+  T2C12:
+    name: Type17_ILC_LST1_TYROBP_AREG_KIT
+    T3C0:
+      name: ribosomal
+    T3C1:
+      name: AHR_CD164_STAT1
+    T3C2:
+      name: doublets_plasma
+    T3C3:
+      name: KLRC1_KLF2_IL22
+    T3C4:
+      name: IFI44L_LY6E_MX1
+    T3C5:
+      name: ribosomal
+  T2C13:
+    name: doublet_bcll
+
+
+
+
+
+
+T1C1:
+  name: Bclls
+  T2C0:
+    name: doublets_epithelial
+    T3C0: 
+      name: IGKC_IGHM_GPR183
+    T3C1: 
+      name: SMIM14
+    T3C2: 
+      name: CD79A_IGHD
+    T3C3: 
+      name: KLF6_KLF2_JUN
+    T3C4:
+      name: IGLC2
+    T3C5:
+      name: ZFP36
+    T3C6:
+      name: macrophage 
+  T2C1:
+    name: HLA-DP_IGHD_FCER2_CD79A
+  T2C2: 
+    name: GPR183_TACI
+  T2C3:
+    name: IGHD_CD74_IGHG_IGHA_CD69
+  T2C4: 
+    name: HLA-DR_CD69
+  T2C5: 
+    name: IGLC2_HLA-DR_CD69_CD83_IGHD_IGHG1
+    T3C0:
+      name: IGKC_IGHG1_IGHA1_IGHA2
+      isend: true
+    T3C1:
+      name: IGLC3_IGLC2
+    T3C2:
+      name: HLA-DQ_MX1_IRF7
+  T2C6:
+    name: plasmablast_IGHA_JCHAIN_CXCR4
+  T2C7:
+    name: doublets_Tclls
+    T3C0:
+      name: IL7R_IGHA1_Doublet
+    T3C1: 
+      name: doublets_epithelial
+    T3C2: 
+      name: IFI44L_IFI6
+    T3C3: 
+      name: doublets_Tclls
+    T3C4:
+      name: IGHG4
+    T3C5:
+      name: ribosomal
+    T3C6:
+      name: Tclls_CXCR6_IL2RA
+  T2C8:
+    name: GerminalCenter 
+    T3C0:
+      name: HMGB1_H2AFZ
+      isend: true
+    T3C1: 
+      name: CD79B_PTPRC_CD27
+    T3C2: 
+      name: doublets_Tclls
+    T3C3: 
+      name: CCR7_CD83_HLA-DQ_SLAMF7
+  T2C9:
+    name: CD69_GPR183_IGHG1
+  T2C10:
+    name: IGLC3 
+    T3C0:
+      name: IGHA_CD27
+    T3C1:
+      name: ribosomal 
+    T3C2:
+      name: HLA-DR_HLA-DQ_MEF2C_SELL
+      isend: true
+    T3C3:
+      name: doublets_epithelial
+    T3C4:
+      name: IFI44L_MX1_IFITM2
+  T2C11: 
+    name: interferon_high
+    T3C0:
+      name: p26_CXCR4_CD69_SELL
+    T3C1:
+      name: HOPX_IGLC2_CD19_IL10_IRF7
+    T3C2: 
+      name: IGHA1_AIM2_CD27
+  T2C12:
+    name: ribosomal 
+  T2C13:
+    name: GerminalCenter_CD27_AICDA_CD38
+  T2C14:
+    name: IGLC2_IGLC3_IGHG4_IGHA2_IGHA1_CD69
+  T2C15:
+    name: GerminalCenter_Prolif
+    T3C0:
+      name: p19_PCNA_LTF
+    T3C1: 
+      name: p19
+    T3C2: 
+      name: p28_MX1_OAS1_IRF7_AICDA
+    T3C3: 
+      name: p19_CDC20_TOP2A_CENPA
+    T3C4:
+      name: p19_CDC20_TOP2A_CENPA
+    T3C5:
+      name: IGHA1_DDX21
+    T3C6:
+      name: SRM_NME1
+    T3C7:
+      name: HOPX_IGHA1_IGHG1
+    T3C8:
+      name: PLAC8_HLA-A_TACI
+    T3C9:
+      name: AICDA_CDK1
+    T3C10:
+      name: p19_STXBP6
+  T2C16:
+    name: doublets_epithelial
+  T2C17:
+    name: GerminalCenter_MKI67_AICDA_ITGAE
+
+
+
+T1C2: 
+  name: Epith
+  T2C0:
+    name: ribosomal_REG1A
+    T3C0:
+      name: ribosomal
+    T3C1:
+      name: mitochondrial
+      T4C0:
+        name: OLFM4_SLC12A2
+      T4C1:
+        name: PHGR1_KRT19
+    T3C2: 
+      name: doublets_plasma
+    T3C3:
+      name: proliferating
+    T3C4:
+      name: MT1 
+    T3C5:
+      name: APOA_MIF
+    T3C6:
+      name: HMGCS2_KLF4_OSR2
+    T3C7:
+      name: mitochondrial
+    T3C8:
+      name: SMOC2_ASCL2_CXCL3
+    T3C9:
+      name: IFI6_IFI27_IFI44L
+  T2C1:
+    name: goblet_SPINK4_TFF3_ITLN1
+    T3C0:
+      name: mitochondrial 
+      isend: true
+    T3C1:
+      name: ITLN1_CLCA1_REG4
+      isend: true
+    T3C2:
+      name: APOA_FABP6_DEFA5
+    T3C3:
+      name: AGR2_PDIA4
+    T3C4: 
+      name: doublets_Tcll
+    T3C5:
+      name: OLFM4_CCL25_CD24
+      T4C0:
+        name: ITLN1
+      T4C1:
+        name: mitochondrial
+      T4C2:
+        name: HLA-A_CD24_LGALS9
+    T3C6:
+      name: REG3A_LYZ_LCN2
+      T4C0: 
+        name: ITLN1
+      T4C1:
+        name: LYZ
+    T3C7:
+      name: S100P_MT1
+      T4C0:
+        name: ITGFB2
+      T4C1:
+        name: PHGR1_AREG_MUC13
+    T3C8:
+      name: PLCG2_MAFB
+    T3C9:
+      name: TFF1_SPINK4_B3GNT7_FFAR4
+    T3C10:
+      name: TM4SF20_NR1H4_CES2
+    T3C11:
+      name: proliferating
+  T2C2:
+    name: SOX4_HES1_HEXIM1_PLCG2
+    T3C0:
+      name: mitochondrial
+    T3C1:
+      name: ribosomal   
+    T3C2:
+      name: PLCG2_ELF3
+    T3C3:
+      name: p14_APOA_APOC_DEFA
+    T3C4:
+      name: Tuft_HPGDS_TRPM5
+  T2C3:
+    name: mitochondrial
+  T2C4:
+    name: early_entero_FABP4_ALDOB_ANPEP
+    T3C0:
+      name: DUOX2_MUC1_mitochondrial
+    T3C1:
+      name: ribosomal
+    T3C2:
+      name: APOA_SLC26A3_DEFA5
+    T3C3: 
+      name: REG1B_MT
+    T3C4: 
+      name: MGST1_AGR2_EPCAM
+      T4C0: 
+        name: PLA2G2A_FOLH1_REG1B
+      T4C1:
+        name: MT1
+      T4C2: 
+        name: SLC28A2_ST6GAL1
+      T4C3:
+        name: CCDC59_CBR1
+      T4C4:
+        name: APOB_ZG16
+      T4C5: 
+        name: spillover_ig
+      T4C6: 
+        name: LYZ_REG4
+      T4C7:
+        name: IFI6_IFI27_IFI44L
+    T3C5:
+      name: PLCG2_SOX4
+    T3C6:
+      name: OAT_SULT1A1
+  T2C5:
+    name: MGST1_CCL25_CD9_EPCAM
+    T3C0: 
+      name: proliferating
+    T3C1:
+      name: ZFP36_OAT
+      T4C0:
+        name: MT1_GSTA1_DHFR
+      T4C1:
+        name: StemCell_LGR5_SOX4
+      T4C2:
+        name: CD74_IL2RG_CCL15
+      T4C3:
+        name: TFRC_C15orf48
+      T4C4: 
+        name: GSTA1_MT
+      T4C5:
+        name: LYZ_S100P_REG3A
+      T4C6:
+        name: doublets_plasma_IFITM1
+      T4C7:
+        name: MCells_SPIB_LTB_CCL25
+    T3C2:
+      name: MCells_SPIB_SOX8_CCL23_CCL20
+  T2C6:
+    name: doublets_bcll
+    T3C0:
+      name: doublets_myeloid
+    T3C1:
+      name: PIGR_IFI6_CCL2
+    T3C2:
+      name: doublets_bcll
+    T3C3:
+      name: doublets_DC
+  T2C7:
+    name: DEFA5_DEFA6_REG3A
+    T3C0:
+      name: spillover_ig
+    T3C1:
+      name: MIF_HMGB1_C15orf48
+    T3C2:
+      name: REG3A_REG1B_LYZ
+    T3C3:
+      name: CFTR_OLFM4
+    T3C4:
+      name: IGFBP7_CXCL14
+  T2C8:
+    name: crypt_based_secretory_REG1B_CD24_OLFM4
+    T3C0:
+      name: proliferating_PLA2G2A
+      isend: true
+    T3C1:
+      name: GSTA1_LIPH
+    T3C2:
+      name: PHGDH_KRT20_LGALS3
+    T3C3:
+      name: ribosomal
+    T3C4:
+      name: IFI6_MX1_LY6E
+    T3C5:
+      name: StemCell_LGR5_NUPR1
+  T2C9:
+    name: late_enterocyte_APOA_APOC_APOB_p14
+    T3C0:
+      name: PLCG2_HES1
+    T3C1:
+      name: OAT_SLC2A2
+    T3C2:
+      name: MT1
+  T2C10:
+    name: doublets_Tcll
+  T2C11:
+    name: enteroendocrine_CHGA_CSG5
+    T3C0: 
+      name: TPH1_CES1_CHGA
+    T3C1:
+      name: mitochondrial
+    T3C2:
+      name: PYY_GCG_CCK
+    T3C3:
+      name: NEUROG3_HES6_CD24
+  T2C12:
+    name: goblet_MUC6_BPIFB1_MUC5B
+
+
+
+T1C3:
+  name: Mloid
+  T2C0:
+    name: macrophage_APOE_C1Q_CD63_CD14_AXL
+    isend: true
+  T2C1:
+    name: ribosomal
+    T3C0:
+      name: IL1B_SOD2_LYZ
+      T4C0:
+        name: HLADR_CD74_LYZ
+      T4C1:
+        name: PRDX1_FTL_LCP1
+      T4C2:
+        name: ribosomal
+    T3C1:
+      name: dendritic_CLEC9A_IRF8_IDO1_lowBATF3
+    T3C2:
+      name: ribosomal
+    T3C3:
+      name: doublet_mito_IgH_epithelial
+    T3C4:
+      name: dendritic_CLEC10A_CD1C
+    T3C5:
+      name: doublets_epithelial
+    T3C6:
+      name: SEPP1_C1Q
+    T3C7:
+      name: lower_quality
+  T2C2:
+    name: macrophage_chemokine
+    T3C0:
+        name: doublets_plasma
+        isend: true
+    T3C1:
+      name: S100A8_S100A9_CXCL9_CXCL10_TNF_inflamonocyte
+    T3C2:
+      name: LGMN_FOLR2_MAF_AXL
+      T4C0:
+        name: ITGB7_LYZ
+      T4C1:
+        name: F13A1_RNASE1
+    T3C3:
+      name: mitochondrial
+      T4C0:
+        name: SOD2_FCN1
+      T4C1:
+        name: FOS_JUN_KLF4
+      T4C2:
+        name: CD74_C1Q_APOE
+      T4C3:
+        name: doublets_plasma
+      T4C4:
+        name: dendritic_CD1C_CD1E_S1PR4
+    T3C4:
+      name: FCN1_AREG
+    T3C5:
+      name: APOE_APOC1_CD163
+      T4C0:
+        name: doublets_plasma
+      T4C1:
+        name: macrophage_APOE_C1Q_CD63_FCER1G
+      T4C2:
+        name: VSIG4_CLEC10A_C1QC
+    T3C6:
+      name: SEPP1_C1Q
+    T3C7:
+      name: dendritic_CLEC10A_CD1C_AREG_CSF2RA_IL23A
+  T2C3:
+    name: mitochondrial
+  T2C4:
+    name: AIF1_S100A4_FCN1_FCER1G_LYZ
+    T3C0:
+      name: S100A8_S100A9
+    T3C1:
+      name: CQ1A_CQ1C_macrophage
+      T4C0:
+        name: S100A4_AIF1_FCN1_S100A9
+      T4C1:
+        name: LYZ_TXN
+      T4C2:
+        name: CQ1A_CQ1C_macrophage
+      T4C3:
+        name: CCL3_CCL4
+      T4C4:
+        name: NFKB_IL1B_CXCL3_ICAM1
+    T3C2:
+      name: S100A10_CD55_KYNU
+      T4C0:
+        name: STAT1_C1Q_FCGR1A
+      T4C1:
+        name: ribosomal
+      T4C2:
+        name: CD1C_FCER1A_FCGR2B
+      T4C3:
+        name: LST1_IFITM2_FCGR3A
+    T3C3:
+      name: HLADR_C1Q_CD68  
+  T2C5:
+    name: dendritic_CLEC10A_CD1C_FCER1A_ITGAX
+    T3C0:
+      name: PSMA 
+    T3C1:
+      name: ribosomal
+    T3C2:
+      name: S100A8_S100A9_patient11
+    T3C3:
+      name: HSP_patient11
+    T3C4:
+      name: IG_enriched_patient16
+    T3C5:
+      name: IL22RA2_SFTPD_LTB_IL23A
+    T3C6:
+      name: CD209_VSIG4_C1Q_CD68_CSF1R
+    T3C7:
+      name: TXNIP_TNF_CX3CR1
+    T3C8:
+      name: CD209_CD163_VSIG4_AXL
+    T3C9:
+      name: TMEM176_CD1B_CD1E_CD40
+    T3C10:
+      name: IL1R2_ribosomal
+    T3C11:
+      name: EGR1_patient11
+  T2C6:
+    name: doublets_lymphoid
+    T3C0:
+      name: doublets_Tcll
+    T3C1:
+      name: FCER1G_IL1B
+      T4C0:
+        name: C1Q_APOE
+      T4C1:
+        name: S100A8_S100A9_FCN1_AIF1
+      T4C2:
+        name: dendritic_CLEC10A_CD1C_FCER1A_CD207
+    T3C2:
+      name: doublet_bcll
+    T3C3:
+      notes: IFI27_IFI16_patient26
+  T2C7:
+    name: macrophage_CXCL9_CXCL10_IDO1_STAT1
+    T3C0:
+      name: S100A8_S100A9_S100A4_FCN1_LILRA5
+    T3C1:
+      name: APOE_APOC1_ADAMDEC1
+    T3C2:
+      name: doublet_bcll
+    T3C3:
+      notes: CREM_CD1C_GPR183
+      T4C0:
+        name: CD1E_P2RY14_P2RY13
+      T4C1:
+        name: HSP 
+      T4C2:
+        name: NRG1_LYZ
+    T3C4:
+      name: macrophage_chemokine_TNF_CD163
+    T3C5:
+      notes: doublets_epithelial
+  T2C8:
+    name: S100A8_S100A9_inflamonocyte
+  T2C9:
+    name: dendritic_migratory_CCR7_FSCN1
+  T2C10:
+    name: dendritic_CLEC9A_BATF3_XCR1_IRF8
+    isend: true
+  T2C11:
+    name: proliferating
+    T3C0:
+      name: TMSB4X_ribosomal
+    T3C1:
+      name: IG_enriched
+    T3C2:
+      name: CQ1A_CQ1C_macrophage
+    T3C3:
+      notes: doublets_epithelial
+    T3C4:
+      name: dendritic_CLEC10A_CD1C_FCER1A_CD207
+    T3C5:
+      notes: dendritic_CLEC9A_BATF3_XCR1_IRF8
+  T2C12:
+    name: plasmacytoid_DC_IRF7_IL3RA
+    isend: true
+
+
+
+
+T1C4:
+  name: IGA_IGK_Plsma
+  T2C0:
+    name: plasmacells
+    isend: true
+  T2C1:
+    name: ribo_CD79A
+    isend: true
+  T2C2:
+    name: JUN_FOS_HSP90
+    isend: true
+  T2C3:
+    name: IGKV1-12
+    isend: true
+  T2C4:
+    name: mitochondrial
+    isend: true
+  T2C5:
+    name: doublets_Tclls
+    isend: true
+  T2C6: 
+    name: IGLC3_IGHG3
+    isend: true
+  T2C7:
+    name: IGKV1-12_IGKV4-1
+    isend: true
+  T2C8:
+    name: doublets_epithelial
+    isend: true
+  T2C9: 
+    name: inflam_macrophage_IL1B_CSF1R
+    isend: true
+  T2C10:
+    name: proliferating
+    isend: true
+
+
+
+
+
+T1C5: 
+  name: Fibroblast
+  T2C0: 
+    name: F3_EDNRB_FRZB
+    T3C0:
+      name: spillover_ig
+      T4C0: 
+        name: PLAT_NPY
+      T4C1:
+        name: mitochondrial
+      T4C2:
+        name: IGFBP5_PTGDS_APOD
+      T4C3:
+        name: FBXW2_CCL2
+    T3C1:
+      name: PTGDS_LY6H_FN1
+      T4C0: 
+        name: ACTA2_CTGF
+      T4C1:
+        name: mitochondrial
+      T4C2:
+        name: ALCAM_SPARC
+    T3C2:
+      name: COL6A2_MMP11_COL1A1
+    T3C3:
+      name: AGT_CD74_CD82
+    T3C4:
+      name: doublets_epithelial
+    T3C5:
+      name: LUM_APOE
+  T2C1: 
+    name: ADAMEC1_IDO1
+    T3C0:
+      name: CXCL14
+    T3C1:
+      name: mitochondrial
+    T3C2:
+      name: TFPI2_CCL11
+    T3C3:
+      name: TAGLN_ACTA2
+    T3C4:
+      name: IFI6_IFI27
+    T3C5:
+      name: WNT2B_CXCL6_IGFBP3
+    T3C6: 
+      name: AGT_PCDH18
+    T3C7:
+      name: WFDC1_CLEC14A
+    T3C8:
+      name: COL3A1_CXCL1
+    T3C9:
+      name: doublets_plasma
+    T3C10:
+      name: doublets_epithelial
+    T3C11: 
+      name: PRELP_OGN_IL33
+    T3C12:
+      name: IGF1_COL6A5_APOD
+  T2C2: 
+    name: CXCL6_CXCL1_CCL11
+    T3C0:
+      name: CCL8_CCL13
+    T3C1:
+      name: CCL19_SOD3
+      T4C0:
+        name: CHI3L1_CXCL6
+      T4C1:
+        name: GSN_IFI27_IRF7
+      T4C2:
+        name: OGN_C7
+    T3C2:
+      name: COL6A5_ADAMDEC1
+    T3C3: 
+      name: IGF2_RAMP1
+      T4C0:
+        name: RAMP1
+      T4C1:
+        name: MIF_IFI27
+      T4C2: 
+        name: CXCL14_LUM
+    T3C4: 
+      name: CXCL13_CHI3L1
+    T3C5:
+      name: TNFRSF11B_COL18A1
+  T2C3:
+    name: ADAMDEC1_CXCL12_WNT2B
+  T2C4:
+    name: doublets_Tclls
+    T3C0:
+      name: Tclls
+    T3C1:
+      name: proliferating
+    T3C2:
+      name: ADAMDEC1_IDO1
+    T3C3:
+      name: doublets_bcll
+    T3C4:
+      name: LUM_MFAP4
+    T3C5:
+      name: CACL1_CFD
+    T3C6:
+      name: CTGF_APOD
+    T3C7:
+      name: FIGF_CPM
+    T3C8:
+      name: doublets_mast
+    T3C9:
+      name: MARCH1_SERPINA9_doublets_bcll
+  T2C5:
+    name: CFD_PTGDS_CCL13
+  T2C6:
+    name: C3_CTSH_CD24
+    T3C0:
+      name: CXCL14_CXCL10_IDO1
+    T3C1:
+      name: CCL19_CCL21_TNFRSF11B_GREM1
+      isend: true
+    T3C2: 
+      name: folliculardendritic_FDCSP_CR2_SPIB_CXCL13
+  T2C7:
+    name: glial_S100B_SPP1_PLP1
+    T3C0:
+      name: ribosomal
+    T3C1:
+      name: IGFBP7_SPARC
+    T3C2:
+      name: FOS_JUN
+    T3C3:
+      name: doublets_Tclls
+    T3C4: 
+      name: IDO1_CCL2
+    T3C5:
+      name: mitochondrial
+    T3C6:
+      name: XKR4_XIST
+    T3C7:
+      name: COL28A1_CAB39L
+  T2C8:
+    name: mitochondrial_doublets
+    T3C0:
+      name: mitochondrial
+    T3C1:
+      name: C3_CXCL14_GBP2
+    T3C2:
+      name: ribosomal
+    T3C3: 
+      name: XIST_CCL11_COL3A1
+  T2C9:
+    name: NOTCH3_CD36
+  T2C10:
+    name: doublets_Tclls
+    T3C0:
+      name: CXCL1_CRYBG3
+    T3C1:
+      name: OGN_EMCN
+    T3C2:
+      name: doublets_mast 
+    T3C3: 
+      name: GSN_CFD
+    T3C4:
+      name: CYGB_KLN53
+    T3C5:
+      name: TNFRSF11_TFPI2
+    T3C6:
+      name: NR2F2_IL33
+    T3C7:
+      name: PTPRS_CTNNB1
+    T3C8:
+      name: WFDC1_TLR5
+    T3C9: 
+      name: doublets_bcll
+    T3C10:
+      name: SRPX_AMBRA1
+    T3C11:
+      name: OAS1_IFI44L
+    T3C12:
+      name: doublets_Tcll
+  T2C11:
+    name: myofibroblast_ACTG2_MYH11
+  T2C12:
+    name: doublets_myeloid
+  T2C13:
+    name: doublets_epithelial
+  T2C14: 
+    name: PLN_MYH11_NOTCH3
+    isend: true
+
+
+T1C6:
+  name: IGG_Plsma
+  isend: false
+  T2C0:
+    name: IGKC
+  T2C1:
+    name: IGLC 
+
+
+
+
+T1C7:
+  name: IGA_IGL_Plsma
+  T2C0:
+    name: plasmacells
+    isend: true
+  T2C1:
+    name: IGLL5
+    isend: true
+  T2C2:
+    name: ribo_CD79A
+    isend: true
+  T2C3:
+    name: IGLV6-57
+    isend: true
+  T2C4:
+    name: JUN_FOS_HSP90
+    isend: true
+  T2C5:
+    name: doublets_Tclls
+    isend: true
+  T2C6:
+    name: IGLV2-14
+    isend: true
+  T2C7:
+    name: doublets_epithelial
+    isend: true
+  T2C8:
+    name: doublets_macrophage_Bcells
+    isend: true
+  T2C9:
+    name: doublets_fibroblast
+    isend: true
+
+
+
+
+T1C8:
+  name: Mstcl
+  T2C0:
+    name: TPSAB1_CTSG_CMA1
+  T2C1: 
+    name: plasmablasts
+    isend: true
+  T2C2: 
+    name: ribosomal 
+  T2C3:
+    name: HSP_high
+  T2C4:
+    name: GATA2_HEXIM1
+    T3C0: 
+      name: TPSB2_TPSAB1
+    T3C1:
+      name: doublets_epithelial
+    T3C2:
+      name: NUCB2_MANF
+  T2C5:
+    name: doublets_Tclls
+    T3C0:
+      name: TPSB2_CD69
+    T3C1:
+      name: EEF_RPL
+    T3C2: 
+      name: CD74_IFI44L
+  T2C6:
+    name: doublets_Bclls_myeloid
+    isend: true
+  T2C7:
+    name: AREG_CPA3_GPR65
+    isend: true
+  T2C8:
+    name: doublets_epithelial
+    isend: true
+  T2C9:
+    name: doublets_epithelial
+  T2C10: 
+    name: TCL1A_AICDA_class_switched_Bcells
+  T2C11:
+    name: proliferating_Mastcells
+
+
+T1C9:
+  name: Endth
+  T2C0: 
+    name: capillary_PLVAP_FLT1
+  T2C1:
+    name: spillover_ig
+    T3C0:
+      name: postcapillary_venule_ACKR1_NPC2_CLU
+    T3C1:
+      name: FCN3_SPARC_VAMP5
+    T3C2:
+      name: mitochondrial
+    T3C3:
+      name: doublets_epithelial
+  T2C2: 
+    name: postcapillary_venule_ACKR1_SELP_MADCAM1
+    T3C0:
+      name: mitochondrial
+    T3C1:
+      name: ribosomal
+    T3C2:
+      name: JUN_FOS_IRF1
+    T3C3:
+      name: P2RY6_COL4A1_SELL
+    T3C4: 
+      name: CLEC3B_POSTN
+    T3C5:
+      name: TXNIP_CD320_PLAT
+    T3C6:
+      name: ZFP36_FOS_JUN
+  T2C3:
+    name: lymphatics_CCL21_LYVE1_PROX1
+    T3C0:
+      name: GIMAP7_CCL21_CLEC4G
+    T3C1:
+      name: HES1_LY6H
+    T3C2:
+      name: mitochondrial
+    T3C3:
+      name: SOD2_IL3RA_BACE2
+    T3C4:
+      name: MMRN1_HLA-DR
+    T3C5:
+      name: spillover_ig
+  T2C4:
+    name: IFI6_ISG15_LY6E
+    T3C0:
+      name: PLVAP_GSN_CA4
+    T3C1:
+      name: postcapillary_venule_ACKR1_MADCAM1
+  T2C5:
+    name: mitochondrial
+  T2C6: 
+    name: doublets_Tclls
+  T2C7:
+    name: mural_cells_FRZB_NOTCH3_PDGFRB
+  T2C8:
+    name: arteriolar_SEMA3G_HEY1_PCSK5
+  T2C9:
+    name: doublets_bcll
+  T2C10:
+    name: doublets_myeloid
+
+
+T1C10:
+  name: IGM_Plsma
+  T2C0:
+    name: IGKC
+    isend: true
+  T2C1:
+    name: IGLC
+    isend: true
+  T2C2:
+    name: doublets_Tcell_macrophage_Bcell
+    isend: true
+  T2C3:
+    name: MastCells
+    isend: true
+
+
+
+T1C11:
+  name: Epith_Paneth
+  

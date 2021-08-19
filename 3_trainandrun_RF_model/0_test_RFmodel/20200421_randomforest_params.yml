@@ -1,0 +1,6 @@
+min_samples_leaf: [1]
+oob_score: [True]
+criterion: ["gini"]
+max_depth: [200]
+n_estimators: [700]
+max_features: ["sqrt"]
