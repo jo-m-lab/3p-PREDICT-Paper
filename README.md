@@ -20,7 +20,7 @@ This repo shows how we:
 
 ## Links to external tutorials and interactive tools
 
-ARBOL: https://jo-m-lab.github.io/ARBOL
+ARBOL: https://github.com/jo-m-lab/ARBOL
 
 ARBOL tutorial: https://jo-m-lab.github.io/ARBOL/ARBOLtutorial.html
 
