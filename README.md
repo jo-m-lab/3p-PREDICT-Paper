@@ -20,7 +20,9 @@ This repo shows how we:
 
 ## Links to external tutorials and interactive tools
 
-ARBOL tutorial: https://shaleklab.github.io/ARBOL/ARBOLtutorial.html
+ARBOL: https://jo-m-lab.github.io/ARBOL
+
+ARBOL tutorial: https://jo-m-lab.github.io/ARBOL/ARBOLtutorial.html
 
 Annotation Rank Score shiny app: https://kylekimler.shinyapps.io/shinyrank/
 
