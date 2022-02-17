@@ -11,6 +11,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import cross_val_score
+from sklearn.metrics import make_scorer, accuracy_score, precision_score, recall_score, f1_score
 
 import logging
 logging.basicConfig()
@@ -24,7 +25,8 @@ def main():
     metafile = os.getenv("METAFILE")
     paramfile = os.getenv("PARAMFILE")
     outmodel = os.getenv("OUTMODEL")
-    outresult = os.getenv("OUTRESULT")
+    outresult_xtra = os.getenv("OUTRESULT_5FOLDCV")
+    outresult = os.getenv("OUTRESULT_UPSAMPLE")
     classcolumn = os.getenv("CLASSCOLUMN")
     
     # READ DATA
@@ -46,7 +48,22 @@ def main():
     # remove doublets
 #     adata = adata[(adata.obs.is_doublet == False) & (adata.obs[classcolumn].isna() == False), :]
     adata = adata[adata.obs.type.str.contains("(Doub)|(LowQual)") == False, :]
-    
+
+     # fit and save trained model
+    fit_rf_model_and_save(
+        model=RandomForestClassifier(n_jobs=-1),
+        data=adata.layers["norm_data"],
+        metadata=adata.obs,
+#         rows=adata.obs.index,
+        classname=classcolumn,
+        params=params,
+        modelfile=outmodel,
+        resultsfile=outresult_xtra, 
+        traintestsplit=5,
+        logginglevel="INFO"
+    )
+
+    # overwrite model with better upsampled train test split
     # fit and save trained model
     fit_rf_model_and_save(
         model=RandomForestClassifier(n_jobs=-1),
@@ -62,6 +79,8 @@ def main():
             sample_n_from_each_class = int(np.quantile(adata.obs.loc[:, classcolumn].value_counts(), .95))),
         logginglevel="INFO"
     )
+
+
 
 
             
@@ -127,11 +146,24 @@ def fit_rf_model_and_save(
     # optimize parameters with grid search
     fn_logger.info(f"Starting grid search optimization over:\n{pformat(params)}")
     
-    
+    scoring = {'accuracy': make_scorer(accuracy_score),
+                'precision_macro': make_scorer(precision_score, average = 'macro'),
+                'precision_micro': make_scorer(precision_score, average = 'micro'),
+                'precision_weighted': make_scorer(precision_score, average = 'weighted'),
+                # 'precision_all': make_scorer(precision_score, average = None),
+                'recall_macro': make_scorer(recall_score, average = 'macro'),
+                'recall_micro': make_scorer(recall_score, average = 'micro'),
+                'recall_weighted': make_scorer(recall_score, average = 'weighted'),
+                # 'recall_all': make_scorer(recall_score, average = None),
+                'f1_macro': make_scorer(f1_score, average = 'macro'),
+                'f1_micro': make_scorer(f1_score, average = 'micro'),
+                'f1_weighted': make_scorer(f1_score, average = 'weighted')}
+
+    # https://scikit-learn.org/stable/modules/model_evaluation.html#multilabel-ranking-metrics
     optimized = GridSearchCV(estimator=model,
                    param_grid=params,
                    refit="accuracy",
-                   scoring=["accuracy"],
+                   scoring=scoring,
                    cv=traintestsplit,
                    n_jobs=-1, verbose=10)
     
