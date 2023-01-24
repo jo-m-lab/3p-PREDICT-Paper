@@ -22,7 +22,7 @@ This repo shows how we:
 
 ARBOL: https://github.com/jo-m-lab/ARBOL
 
-ARBOL tutorial: https://jo-m-lab.github.io/ARBOL/ARBOLtutorial.html
+ARBOL tutorial: https://jo-m-lab.github.io/ARBOL/ARBOLtutorial_22_12_20.html
 
 Annotation Rank Score shiny app: https://kylekimler.shinyapps.io/shinyrank/
 
