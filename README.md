@@ -1,6 +1,6 @@
 # PREDICT (2021) Code Repo
 
-This repository contains code and analysis to replicate the findings of [Zheng et al]()
+This repository contains code and analysis to replicate the findings of [Zheng et al](https://www.medrxiv.org/content/10.1101/2021.09.17.21263540v1)
 
 ## Contents
 
